@@ -38,12 +38,18 @@ const getFlavors = (product) => {
 };
 
 const NAME_TO_SLUG = {
-    "Vapes Desechables": "vapes-desechables",
-    "Pods Recargables": "pods-recargables",
-    "Líquidos": "liquidos",
-    "Accesorios": "accesorios",
-    "Celulares": "celulares",
-    "Perfumes": "perfumes",
+    "Perfumes masculinos": "perfumes-masculinos",
+    "Femeninos": "femeninos",
+    "Unisex": "unisex",
+    "Cremas": "cremas",
+    "Body splash victoria secret": "body-splash-victoria-secret",
+    // compatibilidad nombres viejos
+    "Vapes Desechables": "perfumes-masculinos",
+    "Pods Recargables": "femeninos",
+    "Líquidos": "unisex",
+    "Resistencias": "cremas",
+    "Celulares": "body-splash-victoria-secret",
+    "Perfumes": "perfumes-masculinos",
 };
 
 const API = import.meta.env.VITE_BACKEND_URL?.replace(/\/+$/, "") || "";
@@ -135,6 +141,7 @@ export default function ProductDetailNuevo() {
 
         const rawVolumeOptions = (() => {
             if (Array.isArray(product?.volume_options)) return product.volume_options;
+            if (Array.isArray(product?.volumeOptions)) return product.volumeOptions;
             if (typeof product?.volume_options === "string") {
                 try {
                     const parsed = JSON.parse(product.volume_options);
@@ -143,13 +150,39 @@ export default function ProductDetailNuevo() {
                     return [];
                 }
             }
+            if (typeof product?.volumeOptions === "string") {
+                try {
+                    const parsed = JSON.parse(product.volumeOptions);
+                    return Array.isArray(parsed) ? parsed : [];
+                } catch {
+                    return [];
+                }
+            }
+            if (product?.volume_options && typeof product.volume_options === "object") {
+                return Object.values(product.volume_options);
+            }
+            if (product?.volumeOptions && typeof product.volumeOptions === "object") {
+                return Object.values(product.volumeOptions);
+            }
             return [];
         })();
 
         for (const opt of rawVolumeOptions) {
-            const ml = parseMl(opt?.ml ?? opt?.volume_ml ?? opt?.size_ml);
-            const price = parsePrice(opt?.price ?? opt?.retail_price);
-            const priceWholesale = parsePrice(opt?.price_wholesale ?? opt?.wholesale_price);
+            const ml = parseMl(
+                opt?.ml ??
+                opt?.volume_ml ??
+                opt?.size_ml ??
+                opt?.volumeMl ??
+                opt?.sizeMl ??
+                opt?.label ??
+                opt?.name
+            );
+            const price = parsePrice(opt?.price ?? opt?.retail_price ?? opt?.retailPrice);
+            const priceWholesale = parsePrice(
+                opt?.price_wholesale ??
+                opt?.wholesale_price ??
+                opt?.wholesalePrice
+            );
             if (!ml || ml <= 0) continue;
 
             rows.push({

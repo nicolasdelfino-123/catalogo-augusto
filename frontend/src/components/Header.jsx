@@ -121,12 +121,11 @@ export default function Header() {
 
   // Categorías para el dropdown (coinciden con las del backend)
   const productCategories = [
-    { name: "Pods Descartables", route: "/categoria/vapes-desechables", icon: "💨" },
-    { name: "Líquidos", route: "/categoria/liquidos", icon: "🧪" },
-    { name: "Perfumes", route: "/categoria/perfumes", icon: "🌹" },
-    { name: "Pods Recargables", route: "/categoria/pods-recargables", icon: "♻️" },
-    { name: "Resistencias", route: "/categoria/resistencias", icon: "⚡" },
-    //{ name: "Celulares", route: "/categoria/celulares", icon: "📱" },
+    { name: "Perfumes masculinos", route: "/categoria/perfumes-masculinos", icon: "🕴️" },
+    { name: "Femeninos", route: "/categoria/femeninos", icon: "💃" },
+    { name: "Unisex", route: "/categoria/unisex", icon: "✨" },
+    { name: "Cremas", route: "/categoria/cremas", icon: "🧴" },
+    { name: "Body splash victoria secret", route: "/categoria/body-splash-victoria-secret", icon: "🌸" },
   ];
 
   const goToContact = (e) => {

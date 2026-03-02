@@ -29,6 +29,12 @@ const getTitle = (it) => {
   return base;
 };
 
+const getSelectedMl = (it) => {
+  const raw = it?.selected_size_ml ?? it?.volume_ml ?? it?.product?.volume_ml;
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : null;
+};
+
 export default function Cart({ isOpen: controlledOpen, onClose: controlledOnClose }) {
   const { store, actions } = useContext(Context);
   const [showCheckout, setShowCheckout] = useState(false);
@@ -96,6 +102,8 @@ export default function Cart({ isOpen: controlledOpen, onClose: controlledOnClos
     store.cart.forEach((item) => {
       const name = item.name;
       const flavor = item.selectedFlavor ? ` (${item.selectedFlavor})` : "";
+      const sizeMl = getSelectedMl(item);
+      const size = sizeMl ? ` • ${sizeMl}ml` : "";
       const qty = Number(item.quantity) || 0;
 
       const wholesalePrice = Number(item.price_wholesale);
@@ -105,7 +113,7 @@ export default function Cart({ isOpen: controlledOpen, onClose: controlledOnClos
         ? (wholesalePrice > 0 ? wholesalePrice : null)
         : retailPrice;
 
-      message += `• ${qty} x ${name}${flavor}\n`;
+      message += `• ${qty} x ${name}${flavor}${size}\n`;
 
       if (price !== null) {
         const subtotal = price * qty;
@@ -182,7 +190,8 @@ Pago: ${customerData.payment}
       price: isWholesale
         ? (item.price_wholesale > 0 ? item.price_wholesale : 0)
         : item.price,
-      selected_flavor: item.selectedFlavor || null
+      selected_flavor: item.selectedFlavor || null,
+      selected_size_ml: getSelectedMl(item)
     }));
 
 
@@ -315,7 +324,7 @@ Pago: ${customerData.payment}
               const atLimit = Number(item.quantity || 0) >= Number(max || 0);
 
               return (
-                <div key={`${item.id}-${item.selectedFlavor || 'default'}`} className="bg-white border rounded-lg p-3 sm:p-4 shadow-sm">
+                <div key={`${item.id}-${item.selectedFlavor || 'default'}-${getSelectedMl(item) || 'na'}`} className="bg-white border rounded-lg p-3 sm:p-4 shadow-sm">
                   <div className="flex gap-3">
                     <img
                       src={toAbsUrl(item?.image_url) || "/sin_imagen.jpg"}
@@ -337,10 +346,15 @@ Pago: ${customerData.payment}
                               ? `$${getItemPrice(item).toLocaleString("es-AR")}`
                               : "Consultar"}
                           </p>
+                          {getSelectedMl(item) && (
+                            <p className="text-xs text-gray-500 mt-0.5">
+                              Tamaño: {getSelectedMl(item)}ml
+                            </p>
+                          )}
 
                         </div>
                         <button
-                          onClick={() => actions.removeFromCart(item.id, item.selectedFlavor)}
+                          onClick={() => actions.removeFromCart(item.id, item.selectedFlavor, getSelectedMl(item))}
                           className="text-gray-400 hover:text-gray-600"
                           aria-label="Eliminar producto"
                           title="Eliminar"
@@ -357,7 +371,8 @@ Pago: ${customerData.payment}
                               actions.updateCartQuantity(
                                 item.id,
                                 Math.max(1, (item.quantity || 1) - 1),
-                                item.selectedFlavor
+                                item.selectedFlavor,
+                                getSelectedMl(item)
                               )
                             }
                             aria-label="Disminuir cantidad"
@@ -371,7 +386,7 @@ Pago: ${customerData.payment}
                           <button
                             onClick={() => {
                               const next = Math.min((item.quantity || 1) + 1, Number(max || 0));
-                              actions.updateCartQuantity(item.id, next, item.selectedFlavor);
+                              actions.updateCartQuantity(item.id, next, item.selectedFlavor, getSelectedMl(item));
                             }}
                             aria-label="Aumentar cantidad"
                             disabled={atLimit}

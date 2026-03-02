@@ -22,6 +22,38 @@ from flask import redirect
 
 admin_bp = Blueprint('admin', __name__)
 
+# Catálogo de categorías esperado por el frontend actual.
+# Mantener IDs estables evita romper FK y filtros ya existentes.
+CATEGORY_ID_TO_NAME = {
+    1: "Perfumes masculinos",
+    2: "Femeninos",
+    3: "Unisex",
+    4: "Cremas",
+    5: "Body splash victoria secret",
+    6: "Perfumes",  # compatibilidad legacy
+}
+
+def _ensure_category_exists(category_id: int):
+    category_id = int(category_id)
+    category = Category.query.get(category_id)
+    if category:
+        return category
+
+    # Si no existe el ID exacto, lo creamos con nombre estable para evitar FK errors.
+    name = CATEGORY_ID_TO_NAME.get(category_id, f"Categoría {category_id}")
+    by_name = Category.query.filter_by(name=name).first()
+    if by_name:
+        return by_name
+
+    category = Category(
+        id=category_id,
+        name=name,
+        description=f"Categoría auto-creada ({name})"
+    )
+    db.session.add(category)
+    db.session.flush()
+    return category
+
 # === Helpers de sabores/stock por sabor ===
 def _normalize_catalog(catalog):
     norm = []
@@ -140,6 +172,8 @@ def create_product():
                 volume_ml = None
         volume_options = _normalize_volume_options(data.get('volume_options'))
 
+        safe_category = _ensure_category_exists(int(data['category_id']))
+
         product = Product(
             name=data['name'],
             description=data.get('description', ''),
@@ -147,7 +181,7 @@ def create_product():
             price=float(data['price']),
             price_wholesale=price_wholesale,   # ✅ AHORA SE GUARDA
             stock=computed_stock,
-            category_id=int(data['category_id']),
+            category_id=safe_category.id,
             image_url=data.get('image_url', ''),
             brand=data.get('brand', ''),
             is_active=bool(data.get('is_active', True)),
@@ -167,7 +201,6 @@ def create_product():
 
             created_at=now_cba_naive(),
         )
-
         db.session.add(product)
         db.session.commit()
         return jsonify({'message': 'Producto creado exitosamente', 'product': product.serialize()}), 201
@@ -207,7 +240,9 @@ def update_product(product_id):
                 product.price_wholesale = None
 
         if 'category_id' in data:
-            product.category_id = int(data['category_id'])
+            next_category_id = int(data['category_id'])
+            safe_category = _ensure_category_exists(next_category_id)
+            product.category_id = safe_category.id
         if 'is_active' in data:
             product.is_active = bool(data['is_active'])
             # 👇 NUEVO: puffs (caladas)

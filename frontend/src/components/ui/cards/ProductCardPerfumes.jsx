@@ -151,7 +151,7 @@ export default function ProductCardPerfumes({ product, returnTo, isGrid = true }
 
     const finalPrice = isWholesale
         ? (wholesalePrice > 0 ? wholesalePrice : null)
-        : retailPrice;
+        : (retailPrice > 0 ? retailPrice : null);
 
     const stock = Number(product?.stock ?? 0);
     const hasStock = stock > 0;

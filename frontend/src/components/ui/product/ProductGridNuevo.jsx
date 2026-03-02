@@ -37,21 +37,33 @@ const writeGridState = (key, state) => {
 // Mapeos de categorías
 // -----------------------------
 const SLUG_TO_NAME = {
-    "vapes-desechables": "Vapes Desechables",
-    "pods-recargables": "Pods Recargables",
-    "liquidos": "Líquidos",
-    "resistencias": "Resistencias",
-    "celulares": "Celulares",
-    "perfumes": "Perfumes",
+    "perfumes-masculinos": "Perfumes masculinos",
+    "femeninos": "Femeninos",
+    "unisex": "Unisex",
+    "cremas": "Cremas",
+    "body-splash-victoria-secret": "Body splash victoria secret",
+    // compatibilidad URLs viejas
+    "vapes-desechables": "Perfumes masculinos",
+    "pods-recargables": "Femeninos",
+    "liquidos": "Unisex",
+    "resistencias": "Cremas",
+    "celulares": "Body splash victoria secret",
+    "perfumes": "Perfumes masculinos",
 };
 
 const SLUG_TO_ID = {
+    "perfumes-masculinos": 1,
+    "femeninos": 2,
+    "unisex": 3,
+    "cremas": 4,
+    "body-splash-victoria-secret": 5,
+    // compatibilidad URLs viejas
     "vapes-desechables": 1,
     "pods-recargables": 2,
     "liquidos": 3,
     "resistencias": 4,
     "celulares": 5,
-    "perfumes": 6,
+    "perfumes": 1,
 };
 
 // -----------------------------

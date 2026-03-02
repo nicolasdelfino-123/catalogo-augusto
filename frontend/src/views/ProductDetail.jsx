@@ -42,12 +42,18 @@ const getFlavors = (product) => {
 
 // Mapa nombre de categoría -> slug (coincide con ProductGrid)
 const NAME_TO_SLUG = {
-    "Vapes Desechables": "vapes-desechables",
-    "Pods Recargables": "pods-recargables",
-    "Líquidos": "liquidos",
-    "Accesorios": "accesorios",
-    "Celulares": "celulares",
-    "Perfumes": "perfumes",
+    "Perfumes masculinos": "perfumes-masculinos",
+    "Femeninos": "femeninos",
+    "Unisex": "unisex",
+    "Cremas": "cremas",
+    "Body splash victoria secret": "body-splash-victoria-secret",
+    // compatibilidad con nombres viejos
+    "Vapes Desechables": "perfumes-masculinos",
+    "Pods Recargables": "femeninos",
+    "Líquidos": "unisex",
+    "Resistencias": "cremas",
+    "Celulares": "body-splash-victoria-secret",
+    "Perfumes": "perfumes-masculinos",
 };
 
 const API = import.meta.env.VITE_BACKEND_URL?.replace(/\/+$/, "") || "";

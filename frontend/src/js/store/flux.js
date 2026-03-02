@@ -10,7 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			cart: [],
 			user: null,
 			loading: false,
-			categories: ["Vapes Desechables", "Pods", "Líquidos", "Accesorios"],
+			categories: ["Perfumes masculinos", "Femeninos", "Unisex", "Cremas", "Body splash victoria secret"],
 			orders: [],
 			userAddress: { address: "", phone: "" },
 			updateStatusMsg: "",
@@ -629,6 +629,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const actions = getActions();
 				const currentCart = store.cart || [];
 				const flavorKey = product.selectedFlavor || '';
+				const sizeKey = product.selected_size_ml ?? product.volume_ml ?? null;
 
 				let maxStock = product.stock || 0;
 				if (product.selectedFlavor && Array.isArray(product.flavor_catalog)) {
@@ -637,7 +638,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 				const idx = currentCart.findIndex(
-					(item) => item.id === product.id && (item.selectedFlavor || '') === flavorKey
+					(item) =>
+						item.id === product.id &&
+						(item.selectedFlavor || '') === flavorKey &&
+						(item.selected_size_ml ?? item.volume_ml ?? null) === sizeKey
 				);
 
 				let updatedCart;
@@ -683,10 +687,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-			removeFromCart: (productId, selectedFlavor = '') => {
+			removeFromCart: (productId, selectedFlavor = '', selectedSizeMl = null) => {
 				const store = getStore();
 				const cart = store.cart.filter(
-					(item) => !(item.id === productId && (item.selectedFlavor || '') === (selectedFlavor || ''))
+					(item) =>
+						!(
+							item.id === productId &&
+							(item.selectedFlavor || '') === (selectedFlavor || '') &&
+							(item.selected_size_ml ?? item.volume_ml ?? null) === (selectedSizeMl ?? null)
+						)
 				);
 
 				localStorage.setItem('cart', JSON.stringify(cart));
@@ -709,10 +718,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-			updateCartQuantity: (productId, quantity, selectedFlavor = '') => {
+			updateCartQuantity: (productId, quantity, selectedFlavor = '', selectedSizeMl = null) => {
 				const store = getStore();
 				const cart = store.cart.map((item) =>
-					item.id === productId && (item.selectedFlavor || '') === (selectedFlavor || '')
+					item.id === productId &&
+						(item.selectedFlavor || '') === (selectedFlavor || '') &&
+						(item.selected_size_ml ?? item.volume_ml ?? null) === (selectedSizeMl ?? null)
 						? { ...item, quantity }
 						: item
 				);

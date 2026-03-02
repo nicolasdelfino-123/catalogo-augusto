@@ -4,12 +4,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { withWholesale } from "../../../utils/wholesaleMode"; // ✅ ruta correcta desde /components/product
 
 const CATEGORIES = [
-    { id: 1, name: "Pods Descartables", slug: "vapes-desechables" },
-    { id: 2, name: "Pods Recargables", slug: "pods-recargables" },
-    { id: 3, name: "Líquidos", slug: "liquidos" },
-    { id: 4, name: "Resistencias", slug: "resistencias" },
-    // { id: 5, name: "Celulares", slug: "celulares" },
-    { id: 6, name: "Perfumes", slug: "perfumes" },
+    { id: 1, name: "Perfumes masculinos", slug: "perfumes-masculinos" },
+    { id: 2, name: "Femeninos", slug: "femeninos" },
+    { id: 3, name: "Unisex", slug: "unisex" },
+    { id: 4, name: "Cremas", slug: "cremas" },
+    { id: 5, name: "Body splash victoria secret", slug: "body-splash-victoria-secret" },
 ];
 
 // normalizador simple (lowercase + sin tildes + colapsa espacios)

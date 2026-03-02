@@ -8,23 +8,26 @@ import { Link, useNavigate } from "react-router-dom";
 // ----- Helpers de categorías -----
 // ----- Helpers de categorías -----
 const CATEGORY_NAME_TO_ID = {
-    "Vapes Desechables": 1,
-    "Pods Recargables": 2,   // 👈 antes "Pods"
-    "Líquidos": 3,
-    "Resistencias": 4,       // 👈 antes "Accesorios"
-    "Celulares": 5,
-    "Perfumes": 6,
+    "Perfumes masculinos": 1,
+    "Femeninos": 2,
+    "Unisex": 3,
+    "Cremas": 4,
+    "Body splash victoria secret": 5,
 };
 const ID_TO_CATEGORY_NAME = Object.fromEntries(
     Object.entries(CATEGORY_NAME_TO_ID).map(([k, v]) => [v, k])
 );
+// compatibilidad para productos viejos en categoría 6
+ID_TO_CATEGORY_NAME[6] = "Perfumes masculinos";
 
 function mapCategoryId(name) {
     const n = (name || "").toLowerCase()
-    if (n.includes("desech")) return 1
-    if (n.includes("vape")) return 1
-    if (n.includes("líquido") || n.includes("liquido")) return 3
-    if (n.includes("pod")) return 2
+    if (n.includes("mascul")) return 1
+    if (n.includes("femen")) return 2
+    if (n.includes("unisex")) return 3
+    if (n.includes("crema")) return 4
+    if (n.includes("body") || n.includes("victoria")) return 5
+    if (n.includes("perfume")) return 1
     return 1 // default
 }
 
@@ -233,7 +236,7 @@ const normalizeVolumeOptions = (rows = []) =>
 // ----- Componente principal -----
 export default function AdminProducts() {
     const [products, setProducts] = useState([])
-    const [categories] = useState(["Vapes Desechables", "Pods Recargables", "Líquidos", "Resistencias", "Perfumes"])
+    const [categories] = useState(["Perfumes masculinos", "Femeninos", "Unisex", "Cremas", "Body splash victoria secret"])
     const [form, setForm] = useState(null)
     const [q, setQ] = useState("")
     const [selectedCategory, setSelectedCategory] = useState("Todos")
@@ -522,7 +525,7 @@ export default function AdminProducts() {
         }
     };
 
-    const shouldShowFlavors = (categoryId) => [1, 3].includes(Number(categoryId))
+    const shouldShowFlavors = () => false
 
     const save = async (e) => {
         e.preventDefault()
@@ -754,7 +757,7 @@ export default function AdminProducts() {
                                         stock: it.stock || 0,
                                         image_url: it.image_url || "",
                                         category_id: catId,
-                                        category_name: ID_TO_CATEGORY_NAME[catId] || "Vapes Desechables",
+                                        category_name: ID_TO_CATEGORY_NAME[catId] || "Perfumes masculinos",
                                         flavor_enabled: catalog.length > 0,
                                         flavor_catalog: catalog, // ✅ catálogo completo para edición
                                         flavors: catalog.map((x) => x.name), // ✅ todos los sabores como activos por defecto
@@ -1001,6 +1004,7 @@ export default function AdminProducts() {
 
                                             setForm({
                                                 ...p,
+                                                category_id: Number(p.category_id) === 6 ? 1 : p.category_id,
                                                 price_wholesale: p.price_wholesale ?? "", // ✅ NUEVO: trae mayorista al form
                                                 volume_ml: p.volume_ml ?? "",
                                                 volume_options: normalizeVolumeOptions(p.volume_options || []),
@@ -1451,7 +1455,7 @@ export default function AdminProducts() {
                                 setForm({
                                     ...form,
                                     category_id: categoryId,
-                                    category_name: ID_TO_CATEGORY_NAME[categoryId] || "Vapes Desechables",
+                                    category_name: ID_TO_CATEGORY_NAME[categoryId] || "Perfumes masculinos",
                                     flavor_enabled: show,
                                     flavors: show ? form.flavors || [] : [],
                                 })
@@ -1459,12 +1463,11 @@ export default function AdminProducts() {
                             required
                         >
                             <option value="">Selecciona categoría</option>
-                            <option value={1}>Vapes Desechables</option>
-                            <option value={2}>Pods Recargables</option>
-                            <option value={3}>Líquidos</option>
-                            <option value={4}>Resistencias</option>
-                            <option value={5}>Celulares</option>
-                            <option value={6}>Perfumes</option>
+                            <option value={1}>Perfumes masculinos</option>
+                            <option value={2}>Femeninos</option>
+                            <option value={3}>Unisex</option>
+                            <option value={4}>Cremas</option>
+                            <option value={5}>Body splash victoria secret</option>
                         </select>
 
                         {/* Sabores solo para 1 y 3 */}
