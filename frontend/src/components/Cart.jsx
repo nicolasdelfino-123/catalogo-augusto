@@ -427,7 +427,7 @@ Pago: ${customerData.payment}
 
 
         {/* Nuestro local */}
-        <div>
+        {/*  <div>
           <h3 className="font-semibold mb-2">Retiro en nuestro local</h3>
           <label className="flex items-start gap-3 bg-white border rounded-lg p-3 sm:p-4 shadow-sm">
             <input
@@ -453,7 +453,7 @@ Pago: ${customerData.payment}
             </div>
             <span className="text-green-600 font-semibold">Gratis</span>
           </label>
-        </div>
+        </div> */}
       </div>
 
       {/* Footer Totales / Acciones */}

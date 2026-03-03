@@ -83,9 +83,13 @@ export default function InicioNuevo() {
                 {store.loading ? (
                     <p className="text-center">Cargando...</p>
                 ) : (
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-0 gap-y-2 md:gap-6">
+                    <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
                         {(store.products || []).slice(0, 12).map((product) => (
-                            <div key={product.id} data-product-id={product.id}>
+                            <div
+                                key={product.id}
+                                data-product-id={product.id}
+                                className="transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl rounded-xl"
+                            >
                                 <ProductCardPerfumes product={product} returnTo={location.pathname} isGrid={false} />
                             </div>
                         ))}

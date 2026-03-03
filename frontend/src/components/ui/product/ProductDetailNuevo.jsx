@@ -257,9 +257,8 @@ export default function ProductDetailNuevo() {
     };
 
     const getAvailableStock = () => {
-        const key = selectedFlavor || "";
         const inCart = store.cart?.find(
-            i => i.id === product.id && (i.selectedFlavor || "") === key
+            i => i.id === product.id
         );
         return getMaxStock() - (inCart?.quantity || 0);
     };
@@ -269,10 +268,7 @@ export default function ProductDetailNuevo() {
     ========================= */
 
     const handleAddToCart = () => {
-        if (flavors.length && !selectedFlavor) {
-            setFlavorError("Elegí un sabor");
-            return;
-        }
+
 
         const available = getAvailableStock();
 
@@ -294,10 +290,7 @@ export default function ProductDetailNuevo() {
             price_wholesale: selectedSize?.price_wholesale ?? product?.price_wholesale,
         };
 
-        actions?.addToCart(
-            selectedFlavor ? { ...productForCart, selectedFlavor } : productForCart,
-            quantity
-        );
+        actions?.addToCart(productForCart, quantity);
     };
 
     const handleBack = () => {
@@ -393,9 +386,9 @@ export default function ProductDetailNuevo() {
 
                     {/* INFO */}
                     <div>
-                        <h1 className="text-3xl font-semibold text-stone-900 mb-4">{product.name}</h1>
+                        <h1 className="text-3xl font-serif font-semibold text-[#232325] mb-4 tracking-wide">{product.name}</h1>
                         {product.brand && (
-                            <p className="text-base text-stone-600 mb-4 uppercase tracking-wide">Marca: {product.brand}</p>
+                            <p className="text-base font-serif text-stone-600 mb-4 tracking-wide">Marca: {product.brand}</p>
                         )}
 
 
@@ -406,7 +399,7 @@ export default function ProductDetailNuevo() {
                         </div>
                         {sizeOptions.length > 0 && (
                             <div className="mb-4">
-                                <p className="text-xs text-stone-600 uppercase tracking-wide mb-2">
+                                <p className="text-xs font-serif text-stone-600 tracking-wide mb-2">
                                     Tamaño: {selectedSize?.ml}ml
                                 </p>
                                 <div className="flex flex-wrap gap-2">
@@ -430,16 +423,16 @@ export default function ProductDetailNuevo() {
                             </div>
                         )}
                         <div className="mb-6">
-                            <p className="text-xs text-stone-500 uppercase tracking-widest">Categoría: {displayCategoryName || "Sin categoría"}</p>
+                            <p className="text-xs font-serif text-stone-500 tracking-wide">Categoría: {displayCategoryName || "Sin categoría"}</p>
                         </div>
                         {product.description && (
-                            <p className="text-stone-700 mb-4 leading-relaxed">
+                            <p className="font-serif text-stone-700 mb-4 leading-relaxed">
                                 {product.description}
                             </p>
                         )}
 
                         {/* selector sabores */}
-                        {flavors.length > 0 && (
+                        {/*  {flavors.length > 0 && (
                             <select
                                 className="w-full border border-stone-300 rounded-md px-3 py-2 mb-4 bg-white focus:outline-none focus:ring-1 focus:ring-black"
                                 value={selectedFlavor}
@@ -457,7 +450,7 @@ export default function ProductDetailNuevo() {
 
                         {flavorError && (
                             <p className="text-red-500 text-sm mb-2">{flavorError}</p>
-                        )}
+                        )} */}
 
                         {/* cantidad */}
                         <div className="flex items-center gap-3 mb-4">
@@ -495,13 +488,17 @@ export default function ProductDetailNuevo() {
                         <div className="mt-8 border-b border-stone-200 flex gap-6">
                             <button
                                 onClick={() => setActiveTab("desc")}
-                                className={activeTab === "desc" ? "font-semibold border-b-2 border-black pb-2 text-black" : "pb-2 text-stone-500 hover:text-stone-700"}
+                                className={activeTab === "desc"
+                                    ? "font-serif font-semibold border-b-2 border-black pb-2 text-[#232325]"
+                                    : "font-serif pb-2 text-stone-500 hover:text-[#d4af37] transition-colors"}
                             >
                                 Descripción
                             </button>
                             <button
                                 onClick={() => setActiveTab("info")}
-                                className={activeTab === "info" ? "font-semibold border-b-2 border-black pb-2 text-black" : "pb-2 text-stone-500 hover:text-stone-700"}
+                                className={activeTab === "desc"
+                                    ? "font-serif font-semibold border-b-2 border-black pb-2 text-[#232325]"
+                                    : "font-serif pb-2 text-stone-500 hover:text-[#d4af37] transition-colors"}
                             >
                                 Información adicional
                             </button>
@@ -511,7 +508,7 @@ export default function ProductDetailNuevo() {
                             <div className="pt-4">
                                 <div className="relative">
                                     <p
-                                        className={`text-gray-700 whitespace-pre-line`}
+                                        className={`font-serif text-stone-700 whitespace-pre-line leading-relaxed`}
                                         style={
                                             descExpanded
                                                 ? { maxHeight: 'none', overflow: 'visible', display: 'block' }
@@ -524,7 +521,7 @@ export default function ProductDetailNuevo() {
                                         <button
                                             type="button"
                                             onClick={() => setDescExpanded((v) => !v)}
-                                            className="mt-2 text-stone-700 hover:text-black text-sm flex items-center gap-1"
+                                            className="mt-2 font-serif text-sm text-stone-600 hover:text-[#d4af37] transition-colors flex items-center gap-1"
                                         >
                                             {descExpanded ? (
                                                 <>

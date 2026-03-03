@@ -153,8 +153,8 @@ export default function SidebarFiltersNuevo({
     const body = (
         <div className="w-64 max-w-[80vw] bg-white border-r p-4 space-y-6">
             <div className="md:hidden flex justify-between items-center mb-2">
-                <h3 className="text-lg font-semibold">Filtros</h3>
-                <button onClick={() => setOpen(false)} className="px-3 py-1 border rounded">
+                <h3 className="text-lg font-serif font-semibold tracking-wide text-[#232325]">Filtros</h3>
+                <button onClick={() => setOpen(false)} className="px-3 py-1 border border-stone-300 rounded font-serif text-sm text-stone-700 hover:border-black hover:text-black transition-colors">
                     Cerrar
                 </button>
             </div>
@@ -249,7 +249,7 @@ export default function SidebarFiltersNuevo({
                             onChangePrice?.(draftPrice ?? { min: priceMin, max: priceMax });
                             setDraftPrice(null);
                         }}
-                        className="flex-1 py-2 rounded-lg bg-[#232325] hover:bg-blacktext-white text-sm font-semibold"
+                        className="flex-1 py-2 rounded-lg bg-[#232325] text-white text-sm font-serif hover:bg-black transition-colors"
                     >
                         Aplicar
                     </button>
@@ -261,7 +261,7 @@ export default function SidebarFiltersNuevo({
                             setDraftPrice(null);
                             onChangePrice?.(null);
                         }}
-                        className="flex-1 py-2 rounded-lg border text-sm font-semibold"
+                        className="flex-1 py-2 rounded-lg border border-stone-300 text-sm font-serif text-stone-700 hover:border-black hover:text-black transition-colors"
                     >
                         Limpiar
                     </button>

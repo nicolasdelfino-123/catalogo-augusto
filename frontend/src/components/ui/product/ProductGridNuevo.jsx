@@ -568,17 +568,17 @@ export default function ProductGridNuevo({ category, hideFilters = false }) {
             {/* Breadcrumb */}
             {!hideFilters && (
                 <nav
-                    className="flex items-center text-sm text-gray-600 mb-4"
+                    className="flex items-center text-sm font-serif text-stone-500 mb-4 tracking-wide"
                     aria-label="Breadcrumb"
                 >
-                    <Link to="/" className="hover:text-purple-600 transition-colors">
+                    <Link to="/" className="hover:text-[#d4af37] transition-colors">
                         Inicio
                     </Link>
 
                     {currentCategoryId && (
                         <>
                             <ChevronRight size={16} className="mx-2" />
-                            <span className="text-gray-900 font-medium">{pageTitle}</span>
+                            <span className="font-serif text-[#232325] font-semibold">{pageTitle}</span>
                         </>
                     )}
                 </nav>
@@ -640,22 +640,24 @@ export default function ProductGridNuevo({ category, hideFilters = false }) {
                                 placeholder="Buscar productos en esta categoría..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full px-3 sm:px-4 py-2 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
+                                className="w-full px-4 py-3 rounded-lg font-serif text-sm sm:text-base border border-stone-300 focus:ring-2 focus:ring-[#232325] focus:border-transparent transition-all"
                                 style={{ border: "1px solid #9ca5b5ff" }}
                             />
 
                             <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
                                 {/* Items por página */}
                                 <div className="flex items-center gap-2">
-                                    <span className="text-sm text-gray-700 font-bold">Mostrar:</span>
+                                    <span className="text-sm font-serif text-stone-700 tracking-wide">
+                                        Mostrar:
+                                    </span>
                                     <div className="flex gap-1">
                                         {[8, 12, 16, 24].map((num) => (
                                             <button
                                                 key={num}
                                                 onClick={() => setItemsPerPage(num)}
-                                                className={`px-2 py-1 text-sm rounded transition-colors ${itemsPerPage === num
-                                                    ? "bg-purple-600 text-white"
-                                                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                                                className={`px-2 py-1 text-sm font-serif rounded transition-colors ${itemsPerPage === num
+                                                    ? "bg-[#232325] text-white"
+                                                    : "bg-stone-100 text-stone-700 hover:bg-stone-200"
                                                     }`}
                                             >
                                                 {num}
@@ -666,11 +668,13 @@ export default function ProductGridNuevo({ category, hideFilters = false }) {
 
                                 {/* Ordenamiento */}
                                 <div className="flex items-center gap-2">
-                                    <span className="text-sm text-gray-700 font-bold">Ordenar:</span>
+                                    <span className="text-sm font-serif text-stone-700 tracking-wide">
+                                        Ordenar:
+                                    </span>
                                     <select
                                         value={sortOrder}
                                         onChange={(e) => setSortOrder(e.target.value)}
-                                        className="px-3 py-1 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                        className="px-3 py-2 text-sm font-serif border border-stone-300 rounded-lg bg-white text-stone-700 hover:border-black hover:text-black focus:ring-2 focus:ring-[#232325] focus:border-transparent transition-colors"
                                     >
                                         <option value="default">Predeterminado</option>
                                         <option value="price-asc">Precio: Bajo a Alto</option>
@@ -736,9 +740,9 @@ export default function ProductGridNuevo({ category, hideFilters = false }) {
                                             <button
                                                 key={i}
                                                 onClick={() => handlePageChange(pageNum)}
-                                                className={`min-w-[40px] h-10 rounded-lg font-medium transition-all ${currentPage === pageNum
-                                                    ? "bg-purple-600 text-white shadow-md scale-105"
-                                                    : "bg-white border border-gray-300 text-gray-700 hover:border-purple-300 hover:bg-purple-50"
+                                                className={`min-w-[40px] h-10 rounded-lg font-serif text-sm transition-all ${currentPage === pageNum
+                                                        ? "bg-[#232325] text-white shadow-md scale-105"
+                                                        : "bg-white border border-stone-300 text-stone-700 hover:border-black hover:text-black"
                                                     }`}
                                             >
                                                 {pageNum}
