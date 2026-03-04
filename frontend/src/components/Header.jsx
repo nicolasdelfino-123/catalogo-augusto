@@ -140,6 +140,7 @@ export default function Header() {
 
   // Referencias para el dropdown
   const productsDropdownRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
   // shrink + mostrar/ocultar
   const [isScrolled, setIsScrolled] = useState(false);
@@ -229,6 +230,17 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [mobileSearchOpen]);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (isMenuOpen && mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isMenuOpen]);
+
 
   const cartItemsCount = (store.cart || []).reduce((t, i) => t + (i.quantity || 0), 0);
 
@@ -273,12 +285,20 @@ export default function Header() {
     }
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [isMenuOpen]);
 
 
   return (
     <header
       className={[
-        "sticky top-0 z-50 bg-[#0b0b0d]/90 backdrop-blur border-b border-yellow-600/20 overflow-visible",
+        "sticky top-0 z-50 bg-[#0b0b0d]/90 border-b border-yellow-600/20 overflow-visible",
         "transition-all duration-300",
         isScrolled ? "shadow-lg" : "shadow-none",
         show ? "translate-y-0" : "-translate-y-full"
@@ -568,55 +588,59 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute left-0 right-0 top-full bg-gray-800 shadow-lg z-50">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div className="md:hidden fixed inset-0 z-50 bg-black/50" onClick={() => setIsMenuOpen(false)}>
+            <div
+              ref={mobileMenuRef}
+              className="fixed left-0 right-0 bg-[#111113] shadow-xl border-t border-amber-500/20 px-4 pt-4 pb-5 space-y-3 font-serif tracking-wide"
+              style={{ top: isScrolled ? 98 : 64 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+
               <Link
                 to={withWholesale("/inicio")}
-                className="text-gray-300 hover:text-amber-300 transition-all duration-300"
+                className="block text-gray-200 hover:text-amber-300 transition-all duration-300 text-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Inicio
               </Link>
 
               {/* Productos en mobile */}
-              <div className="px-3 py-2">
-                <span className="block text-gray-200 font-medium mb-2">Productos:</span>
-                <div className="ml-4 space-y-1">
+              <div className="pt-2">
+                <span className="block text-gray-400 text-sm uppercase tracking-wider mb-2">
+                  Productos
+                </span>
+
+                <div className="border-l border-amber-500/30 pl-4 space-y-2">
+
                   <Link
                     to={withWholesale("/products")}
-                    className="text-gray-300 hover:text-amber-300 transition-all duration-300"
+                    className="block text-gray-200 hover:text-amber-300 transition-all duration-300"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Ver todos
+                    Ver todos los productos
                   </Link>
+
                   {productCategories.map((category) => (
                     <Link
                       key={category.route}
                       to={withWholesale(category.route)}
-                      className="block px-3 py-1 text-sm hover:text-purple-400 transition-colors"
+                      className="block text-gray-300 hover:text-amber-300 transition-colors"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {category.icon} {category.name}
                     </Link>
                   ))}
+
                 </div>
               </div>
 
-              <Link
-                to="/mayorista"
-                className="block px-3 py-2 text-gray-200 hover:text-purple-400 transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Mayoristas
-              </Link>
               <a
                 href="/inicio#contacto"
                 onClick={goToContact}
-                className="block px-3 py-2 hover:text-purple-400 transition-colors"
+                className="block pt-4 mt-3 border-t border-gray-700 text-gray-200 hover:text-amber-300 transition-colors text-lg"
               >
                 Contacto
               </a>
-
 
               {/* Mobile: Ingresar solo si NO hay usuario */}
               {
