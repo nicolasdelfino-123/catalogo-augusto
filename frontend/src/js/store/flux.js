@@ -680,7 +680,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					product: {
 						name: product.name,
 						price: displayPrice,
-						image: product.image_urls?.[0] || product.image_url || "/sin_imagen.jpg"
+						image: product.image_urls?.[0] || product.image_url || "/sin_imagen.jpg",
+						volume_ml: product.selected_size_ml ?? product.volume_ml ?? null
 					}
 				});
 
