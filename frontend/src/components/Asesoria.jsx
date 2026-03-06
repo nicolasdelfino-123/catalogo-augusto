@@ -8,25 +8,25 @@ export default function Asesoria() {
 
     return (
         <section className="w-full bg-gradient-to-b from-white to-gray-50 py-20 px-6 font-serif">
-            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div className="max-w-6xl mx-auto grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-12 items-center">
 
                 {/* TEXTO */}
                 <div className="flex flex-col gap-6">
 
-                    <span className="text-sm uppercase tracking-widest text-amber-500 font-medium">
+                    <span className="text-sm uppercase tracking-widest text-amber-500 font-medium text-center">
                         Asesoramiento
                     </span>
 
-                    <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight">
+                    <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight text-center">
                         Encontrá tu próxima fragancia
                     </h2>
 
-                    <p className="text-gray-600 text-lg leading-relaxed">
+                    <p className="text-gray-600 text-lg leading-relaxed text-justify">
                         Cada fragancia tiene una personalidad única y una historia que contar.
                         En nuestra tienda seleccionamos perfumes pensados para distintos estilos, momentos y ocasiones.
                     </p>
 
-                    <p className="text-gray-600 text-lg leading-relaxed">
+                    <p className="text-gray-600 text-lg leading-relaxed text-justify">
                         Si querés encontrar el aroma que mejor te represente, podemos asesorarte y ayudarte a descubrir la fragancia ideal para vos.
                     </p>
 
@@ -34,13 +34,18 @@ export default function Asesoria() {
                         href={`https://wa.me/${whatsappNumber}?text=${message}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block w-fit px-8 py-4 rounded-xl text-lg font-medium text-black bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-600 hover:bg-gradient-to-r hover:from-[#d4af37] hover:via-[#f5d76e] hover:to-[#b8962e] transition-all duration-300 shadow-lg hover:shadow-xl"
+                        className="inline-block mx-auto px-8 py-4 rounded-xl text-lg font-medium text-black bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-600 hover:bg-gradient-to-r hover:from-[#d4af37] hover:via-[#f5d76e] hover:to-[#b8962e] transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
                         Solicitar asesoramiento
                     </a>
 
                 </div>
-
+                <div className="
+w-full h-[1px] md:w-px md:h-full
+bg-gradient-to-r md:bg-gradient-to-b
+from-transparent via-amber-400/40 to-transparent
+my-10 md:my-0
+"></div>
                 {/* IMAGEN */}
                 <div className="relative">
 
@@ -48,7 +53,7 @@ export default function Asesoria() {
                         <img
                             src={perfumeImg}
                             alt="Perfume elegante"
-                            className="w-full h-[420px] object-cover"
+                            className="w-full h-[280px] md:h-[400px] object-cover"
                         />
                     </div>
 
