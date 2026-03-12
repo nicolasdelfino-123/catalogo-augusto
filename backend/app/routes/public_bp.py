@@ -176,14 +176,14 @@ from app.models import Order, OrderItem, now_cba_naive
 @public_bp.route('/orders', methods=['POST'])
 def create_order():
     try:
-        data = request.get_json()
+        data = request.get_json() or {}
 
         order = Order(
-            total_amount=data.get("total_amount", 0),
-            payment_method=data.get("payment_method", "coordinar"),
+            total_amount=float(data.get("total_amount") or 0),
+            payment_method=data.get("payment_method") or "coordinar",
             customer_first_name=data.get("customer_first_name"),
             customer_phone=data.get("customer_phone"),
-            shipping_address=data.get("shipping_address", {}),
+            shipping_address=data.get("shipping_address") or {},
             status="pending"
         )
 
@@ -191,41 +191,73 @@ def create_order():
         db.session.flush()  # obtiene order.id
 
         for item in data.get("order_items", []):
+
+            # tamaño ml seguro
             raw_size_ml = item.get("selected_size_ml")
             try:
                 selected_size_ml = int(raw_size_ml) if raw_size_ml not in (None, "") else None
             except (TypeError, ValueError):
                 selected_size_ml = None
-            qty = int(item.get("quantity", 1) or 1)
+
+            # cantidad segura
+            try:
+                qty = int(item.get("quantity", 1) or 1)
+            except (TypeError, ValueError):
+                qty = 1
+
+            # precio seguro
+            try:
+                price = float(item.get("price") or 0)
+            except (TypeError, ValueError):
+                price = 0
+
+            product_id = item.get("product_id")
 
             order_item = OrderItem(
                 order_id=order.id,
-                product_id=item.get("product_id"),
+                product_id=product_id,
                 quantity=qty,
-                price=float(item.get("price") or 0),
+                price=price,
                 selected_flavor=item.get("selected_flavor"),
                 selected_size_ml=selected_size_ml
             )
             db.session.add(order_item)
 
             # ✅ Descontar stock real para que AdminProducts quede consistente
-            product = Product.query.get(item.get("product_id"))
+            if product_id:
+                product = Product.query.get(product_id)
+            else:
+                product = None
+
             if product:
-                product.stock = max(0, int(product.stock or 0) - qty)
+                try:
+                    product.stock = max(0, int(product.stock or 0) - qty)
+                except (TypeError, ValueError):
+                    product.stock = 0
 
                 if selected_size_ml is not None and product.volume_options:
                     options = json.loads(json.dumps(product.volume_options or []))
+
                     for row in options:
                         try:
                             row_ml = int(row.get("ml")) if row.get("ml") not in (None, "") else None
                         except (TypeError, ValueError):
                             row_ml = None
+
                         if row_ml == selected_size_ml:
-                            row["stock"] = max(0, int(row.get("stock") or 0) - qty)
+                            try:
+                                row["stock"] = max(0, int(row.get("stock") or 0) - qty)
+                            except (TypeError, ValueError):
+                                row["stock"] = 0
                             break
+
                     product.volume_options = options
                     flag_modified(product, "volume_options")
-                    product.stock = sum(max(0, int(x.get("stock") or 0)) for x in options)
+
+                    try:
+                        product.stock = sum(max(0, int(x.get("stock") or 0)) for x in options)
+                    except Exception:
+                        product.stock = 0
 
         db.session.commit()
 
