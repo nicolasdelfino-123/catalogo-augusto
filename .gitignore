@@ -149,7 +149,7 @@ typings/
 .nuxt
 dist
 .cache/
-public
+
 
 # Vuepress
 .vuepress/dist
