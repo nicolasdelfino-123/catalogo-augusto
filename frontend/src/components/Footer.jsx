@@ -3,10 +3,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { withWholesale } from '../utils/navigation.js'
 import { PERFUME_CATEGORY_DEFINITIONS as FOOTER_CATEGORIES } from '../utils/perfumeCategories.js'
 
-import logofooter from "../assets/logofooter.png";
+/* import logofooter from "../assets/logofooter.png"; */
+import { storeConfig } from "../config/storeConfig";
 
-const phone = "5493533459552";
-const message = encodeURIComponent(`Hola, tengo una consulta sobre el producto...`);
+const logofooter = `/${storeConfig.media.footerLogo}`;
+
+const phone = storeConfig.contact.whatsapp;
+const message = encodeURIComponent(storeConfig.contact.whatsappMessage);
 const link = `https://wa.me/${phone}?text=${message}`;
 
 const Footer = () => {
@@ -24,7 +27,7 @@ const Footer = () => {
                             />
 
                             <p className="text-gray-400 text-sm max-w-xs -mt-5 text-center">
-                                Perfumes árabes originales en Argentina.
+                                {storeConfig.branding.footerText}
                             </p>
                         </div>
 
@@ -85,25 +88,25 @@ const Footer = () => {
                                         rel="noopener noreferrer"
                                         className="relative hover:text-amber-300 transition-all duration-300 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
                                     >
-                                        WhatsApp: +54 9 3533 45-9552
+                                        WhatsApp: {storeConfig.contact.whatsappDisplay}
                                     </a>
                                 </li>
                                 <li>
                                     <a
-                                        href="mailto:xxx@gmail.com"
+                                        href={`mailto:${storeConfig.contact.email}`}
                                         className="relative hover:text-amber-300 transition-all duration-300 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
                                     >
-                                        Email: nicolasdelfino585@gmail.com
+                                        Email: {storeConfig.contact.emailDisplay}
                                     </a>
                                 </li>
                                 <li>
                                     <a
-                                        href="https://www.instagram.com/catalogos_digitales/"
+                                        href={storeConfig.contact.instagram}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="relative hover:text-amber-300 transition-all duration-300 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
                                     >
-                                        Instagram: @catalogos_digitales
+                                        Instagram: {storeConfig.contact.instagramDisplay}
                                     </a>
                                 </li>
                             </ul>
@@ -121,14 +124,14 @@ const Footer = () => {
                                 className="cursor-default select-none"
                             >
                                 2026
-                            </span> | Sitio web desarrollado por{" "}
+                            </span> | {storeConfig.footer.copyrightName} | Sitio web desarrollado por{" "}
                             <a
                                 href="https://wa.me/5493534793366?text=Hola%2C%20vi%20tu%20web%20y%20quiero%20consultarte%20por%20una%20página"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:text-white transition-colors font-medium"
                             >
-                                Nicolás Delfino
+                                {storeConfig.footer.developerName}
                             </a>.
                         </p>
                     </div>

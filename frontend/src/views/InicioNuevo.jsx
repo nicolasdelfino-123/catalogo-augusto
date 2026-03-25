@@ -5,12 +5,14 @@ import ProductCardPerfumes from "../components/ui/cards/ProductCardPerfumes.jsx"
 import HomeContact from "../components/home/HomeContact.jsx";
 import banner from "../assets/banner_arabe.jpg";
 import Asesoria from "../components/Asesoria.jsx";
+import { storeConfig } from "../config/storeConfig";
 
 
 export default function InicioNuevo() {
     const { store, actions } = useContext(Context);
     const location = useLocation();
     const navigate = useNavigate();
+    const banner = `/${storeConfig.media.heroImage}`;
 
     useEffect(() => {
         if (actions?.fetchProducts) {
@@ -18,15 +20,15 @@ export default function InicioNuevo() {
         }
     }, []);
 
-    const ADDRESS = "Vélez Sarsfield 303, Las Varillas, Córdoba";
-    const HOURS = "Lunes a Sábado 8:00–12:00 / 17:00–20:15";
-    const IG_URL = "https://www.instagram.com/catalogos_digitales/";
-    const WA_URL = `https://wa.me/54935334793366?text=${encodeURIComponent(
-        "Hola, quiero consultar por un perfume del catálogo"
+    const ADDRESS = storeConfig.business.address;
+    const HOURS = storeConfig.business.hours;
+    const IG_URL = storeConfig.contact.instagram;
+
+    const WA_URL = `https://wa.me/${storeConfig.contact.whatsapp}?text=${encodeURIComponent(
+        storeConfig.contact.whatsappMessage
     )}`;
 
-    const MAP_EMBED =
-        "https://www.google.com/maps?q=-31.8704952,-62.7228966&z=17&hl=es&output=embed";
+    const MAP_EMBED = storeConfig.map.embed;
 
 
     useLayoutEffect(() => {
@@ -73,11 +75,11 @@ export default function InicioNuevo() {
                 {/* Contenido */}
                 <div className="relative z-10 px-6 max-w-3xl mt-[190px] sm:mt-[180px] md:mt-[350px]">
                     <h1 className="text-2xl md:text-5xl font-serif font-semibold text-white mb-4 tracking-wide">
-                        Fragancias Árabes
+                        {storeConfig.branding.heroTitle}
                     </h1>
 
                     <p className="text-sm md:text-xl font-serif text-gray-200 mb-6 tracking-wide">
-                        Aromas intensos • Elegancia sofisticada • Exclusividad
+                        {storeConfig.branding.heroSubtitle}
                     </p>
 
                     {/* <a
