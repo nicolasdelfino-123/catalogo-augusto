@@ -60,11 +60,31 @@ export default function InicioNuevo() {
 
 
             {/* HERO PREMIUM CON IMAGEN IMPORTADA */}
-            <section className="relative h-[400px] sm:h-[420px] md:h-[75vh] flex items-center justify-center text-center overflow-hidden">
+            <section className="relative h-[400px] sm:h-[420px] md:h-[75vh] flex items-center justify-center text-center overflow-hidden bg-[#0B0608]">
 
                 {/* Fondo con tu imagen */}
                 <div
-                    className="absolute inset-0 bg-cover bg-[center_top_-5px] sm:bg-center animate-zoomSlow brightness-110 saturate-110"
+                    className="
+  absolute inset-0
+  bg-no-repeat
+
+  /* ================= MOBILE ================= */
+
+  bg-[length:170%_auto]      /* ZOOM MOBILE (100% = normal, 120% = zoom, 90% = más chica) */
+  bg-[center_top_1px]      /* POSICION VERTICAL MOBILE (- sube, + baja) */
+
+  /* ================= DESKTOP ================= */
+
+  sm:bg-cover                /* DESKTOP llena todo el contenedor */
+  sm:bg-center               /* DESKTOP centrada */
+  md:bg-[center_top_-2px]   /* POSICION VERTICAL DESKTOP */
+
+  /* ================= EFECTOS ================= */
+
+  animate-zoomSlow
+  brightness-110
+  saturate-110
+  "
                     style={{ backgroundImage: `url(${banner})` }}
                 />
 
@@ -73,21 +93,40 @@ export default function InicioNuevo() {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/0 to-black/40" />
 
                 {/* Contenido */}
-                <div className="relative z-10 px-6 max-w-3xl mt-[190px] sm:mt-[180px] md:mt-[350px]">
-                    <h1 className="text-2xl md:text-5xl font-serif font-semibold text-white mb-4 tracking-wide">
+                <div className="
+relative z-10 px-6 max-w-3xl
+
+mt-[240px]        /* MOBILE mover bloque */
+sm:mt-[180px]
+md:mt-[350px]     /* DESKTOP mover bloque */
+">
+
+                    <h1 className="
+    text-2xl md:text-3xl
+    font-serif font-semibold text-white tracking-wide
+
+    pt-[20px]        /* MOBILE espacio arriba titulo */
+    md:pt-[190px]    /* DESKTOP espacio arriba */
+
+    mb-[10px]        /* MOBILE espacio abajo titulo */
+    md:mb-[20px]     /* DESKTOP espacio abajo */
+    ">
                         {storeConfig.branding.heroTitle}
                     </h1>
 
-                    <p className="text-sm md:text-xl font-serif text-gray-200 mb-6 tracking-wide">
+                    <p className="
+    text-sm md:text-xl
+    font-serif text-gray-200 tracking-wide
+
+    mt-[-5px]        /* MOBILE subir/bajar subtitulo */
+    md:mt-[-20px]    /* DESKTOP */
+
+    mb-[20px]        /* espacio abajo subtitulo */
+    md:mb-[30px]
+    ">
                         {storeConfig.branding.heroSubtitle}
                     </p>
 
-                    {/* <a
-                        href={WA_URL}
-                        className="inline-block px-8 py-3 bg-[#232325] text-white rounded-lg font-medium tracking-wide hover:bg-black transition-colors"
-                    >
-                        Solicitar Asesoría
-                    </a> */}
                 </div>
 
             </section>

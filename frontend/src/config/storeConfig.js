@@ -2,8 +2,8 @@ export const storeConfig = {
     storeName: "Shatha Perfumes",
 
     branding: {
-        heroTitle: "Fragancias Árabes",
-        heroSubtitle: "Aromas intensos • Elegancia sofisticada • Exclusividad",
+        heroTitle: "Fragancias Árabes 100% Originales",
+        heroSubtitle: "Contamos con stock y variedad permanente",
         footerText: "Perfumes árabes originales en Argentina.",
     },
 
@@ -31,8 +31,8 @@ export const storeConfig = {
     },
 
     media: {
-        heroImage: "banner_arabe.jpg",
-        footerLogo: "tutu_si.png",
+        heroImage: "portada_si.jpeg",
+        footerLogo: "logo_attar_2.jpeg",
     },
 
     map: {
