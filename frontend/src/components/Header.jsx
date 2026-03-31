@@ -457,7 +457,7 @@ export default function Header() {
                 onClick={goToContact}
                 className="text-gray-300 hover:text-amber-300 transition-all duration-300"
               >
-                Asesoría
+                Contacto
               </a>
             </nav>
 

@@ -23,7 +23,7 @@ const Footer = () => {
                             <img
                                 src={logofooter}
                                 alt="Shatha"
-                                className="h-[190px] w-[180px] md:h-[220px] md:w-[220px] mt-[-20px] md:mt-[-40px] mb-[10px] md:mb-[20px] opacity-95 object-contain"
+                                className="h-[190px] w-[180px] md:h-[220px] md:w-[220px] mt-[-20px] md:mt-[-10px] mb-[10px] md:mb-[20px] opacity-95 object-contain"
                             />
 
                             <p className="text-gray-400 text-sm max-w-xs -mt-5 text-center">
@@ -96,7 +96,7 @@ const Footer = () => {
                                         href={`mailto:${storeConfig.contact.email}`}
                                         className="relative hover:text-amber-300 transition-all duration-300 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
                                     >
-                                        Email: {storeConfig.contact.emailDisplay}
+                                        {storeConfig.contact.emailDisplay}
                                     </a>
                                 </li>
                                 <li>
@@ -126,7 +126,7 @@ const Footer = () => {
                                 2026
                             </span> | {storeConfig.footer.copyrightName} | Sitio web desarrollado por{" "}
                             <a
-                                href="https://wa.me/5493534793366?text=Hola%2C%20vi%20tu%20web%20y%20quiero%20consultarte%20por%20una%20página"
+                                href="https://wa.me/5493534793366?text=Hola%2C%20vi%20tu%20web%20y%20quiero%20consultarte%20por%20un%20catálogo%20para%20mi%20negocio"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:text-white transition-colors font-medium"

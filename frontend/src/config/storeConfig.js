@@ -4,35 +4,35 @@ export const storeConfig = {
     branding: {
         heroTitle: "Fragancias Árabes 100% Originales",
         heroSubtitle: "Contamos con stock y variedad permanente",
-        footerText: "Perfumes árabes originales en Argentina.",
+        /*       footerText: "Perfumes árabes originales en Argentina.", */
     },
 
     footer: {
         copyrightName: "Catálogo Web",
-        developerName: "Nicolás Delfino",
+        developerName: "Catálogo Web",
         developerWhatsapp: "5493534793366"
     },
 
     contact: {
-        whatsapp: "5493534793366",
+        whatsapp: "5493512479800",
         whatsappMessage: "Hola, quiero consultar por un perfume del catálogo",
-        whatsappDisplay: "+54 9 353 479-3366",
+        whatsappDisplay: "+54 9 351 247-9800",
 
-        instagram: "https://www.instagram.com/catalogos_digitales/",
-        instagramDisplay: "@catalogos_digitales",
+        instagram: "https://www.instagram.com/attarperfumesarabes/",
+        instagramDisplay: "@attarperfumesarabes",
 
         email: "nicolasdelfino585@gmail.com",
-        emailDisplay: "nicolasdelfino585@gmail.com",
+        /*  emailDisplay: "nicolasdelfino585@gmail.com", */
     },
 
     business: {
-        address: "Vélez Sarsfield 303, Las Varillas, Córdoba",
-        hours: "Lunes a Sábado 8:00–12:00 / 17:00–20:15",
+        address: "Córdoba Capital, Zona Ruta 20",
+        hours: "Horarios: 9:00–21:00",
     },
 
     media: {
         heroImage: "portada_si.jpeg",
-        footerLogo: "logo_attar_2.jpeg",
+        footerLogo: "logo_attar_2_si.jpeg",
     },
 
     map: {
