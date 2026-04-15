@@ -2,8 +2,8 @@ export const storeConfig = {
     storeName: "Attar Perfumes",
 
     branding: {
-        heroTitle: "Fragancias Árabes Originales",
-        heroSubtitle: "Contamos con stock y variedad permanente",
+        heroTitle: "Amor y felicidad en botellitas pequeñas",
+        heroSubtitle: "Decants de Perfumes Originales",
         /*       footerText: "Perfumes árabes originales en Argentina.", */
     },
 
@@ -26,16 +26,17 @@ export const storeConfig = {
     },
 
     business: {
-        address: "Córdoba Capital, Zona Ruta 20",
-        hours: "Horarios: 9:00–21:00",
+        address: "Stand Mall Espacio Urbano Pionero",
+        city: "Segundo piso (casi al lado de Tarragona)",
+        hours: "Lunes a Sábado 10:30–20:30 - Domingo 11:00–20:00",
     },
 
     media: {
-        heroImage: "portada_si.jpeg",
+        heroImage: "f2.jpeg",
         footerLogo: "logo_attar_2_si.jpeg",
     },
 
     map: {
-        embed: "https://www.google.com/maps?q=-31.8704952,-62.7228966&z=17&hl=es&output=embed",
+        embed: "https://www.google.com/maps?q=-53.1315202,-70.9090699&z=17&output=embed",
     }
 };

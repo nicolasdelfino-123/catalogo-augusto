@@ -35,6 +35,8 @@ export default function InicioNuevo() {
     const ADDRESS = storeConfig.business.address;
     const HOURS = storeConfig.business.hours;
     const IG_URL = storeConfig.contact.instagram;
+    const ADDRESS_CITY = storeConfig.business.city;
+
 
     const WA_URL = `https://wa.me/${storeConfig.contact.whatsapp}?text=${encodeURIComponent(
         storeConfig.contact.whatsappMessage
@@ -108,14 +110,14 @@ export default function InicioNuevo() {
 
   /* ================= MOBILE ================= */
 
-  bg-[length:170%_auto]      /* ZOOM MOBILE (100% = normal, 120% = zoom, 90% = más chica) */
+  bg-[length:100%_auto]      /* ZOOM MOBILE (100% = normal, 120% = zoom, 90% = más chica) */
   bg-[center_top_1px]      /* POSICION VERTICAL MOBILE (- sube, + baja) */
 
   /* ================= DESKTOP ================= */
 
-  sm:bg-cover                /* DESKTOP llena todo el contenedor */
-  sm:bg-center               /* DESKTOP centrada */
-  md:bg-[center_top_-2px]   /* POSICION VERTICAL DESKTOP */
+sm:bg-[length:100%_auto]   /* tamaño imagen */
+sm:bg-center              /* centrado horizontal */
+md:bg-[center_top_-700px]  /* mover vertical */
 
   /* ================= EFECTOS ================= */
 
@@ -134,7 +136,7 @@ export default function InicioNuevo() {
                 <div className="
 relative z-10 px-6 max-w-3xl
 
-mt-[240px]        /* MOBILE mover bloque */
+mt-[290px]        /* MOBILE mover bloque */
 sm:mt-[180px]
 md:mt-[350px]     /* DESKTOP mover bloque */
 ">
@@ -144,9 +146,9 @@ md:mt-[350px]     /* DESKTOP mover bloque */
     font-serif font-semibold text-white tracking-wide
 
     pt-[20px]        /* MOBILE espacio arriba titulo */
-    md:pt-[190px]    /* DESKTOP espacio arriba */
+    md:pt-[150px]    /* DESKTOP espacio arriba */
 
-    mb-[10px]        /* MOBILE espacio abajo titulo */
+    mb-[5px]        /* MOBILE espacio abajo titulo */
     md:mb-[20px]     /* DESKTOP espacio abajo */
     ">
                         {storeConfig.branding.heroTitle}
@@ -168,11 +170,11 @@ md:mt-[350px]     /* DESKTOP mover bloque */
                 </div>
 
             </section>
-
+            {/* 
             <div className="relative z-10 overflow-hidden whitespace-nowrap bg-gradient-to-r from-black via-[#0B0608] to-black py-3">
-                {/* TRACK con 2 grupos idénticos → loop perfecto */}
+         
                 <div className="marquee-track will-change-transform">
-                    {/* Grupo 1 */}
+                    
                     <div className="marquee-group">
                         <span className="text-white text-lg md:text-2xl font-semibold mx-[40px]">
                             3 cuotas sin interés<span className="mx-6">•</span>Descuentos Pago Efectivo / Transferencia
@@ -181,7 +183,7 @@ md:mt-[350px]     /* DESKTOP mover bloque */
                             3 cuotas sin interés<span className="mx-6">•</span>Descuentos Pago Efectivo / Transferencia
                         </span>
                     </div>
-                    {/* Grupo 2 (clon) */}
+            
                     <div className="marquee-group" aria-hidden="true">
                         <span className="text-white text-lg md:text-2xl font-semibold mx-[40px]">
                             3 cuotas sin interés<span className="mx-6">•</span>Descuentos Pago Efectivo / Transferencia
@@ -191,7 +193,7 @@ md:mt-[350px]     /* DESKTOP mover bloque */
                         </span>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <style>{`
     .marquee-track {
@@ -272,8 +274,9 @@ shadow-lg shadow-amber-500/20
                             {ADDRESS.split(",")[0]}
                         </h2>
                         <p className="mt-2 text-lg text-gray-500">
-                            {ADDRESS.replace(ADDRESS.split(",")[0] + ", ", "")}
+                            {ADDRESS_CITY.replace(ADDRESS_CITY.split(",")[0] + ", ", "")}
                         </p>
+                        <p className="mt-2 text-lg text-gray-500">Punta Arenas</p>
 
                         <p className="mt-2 text-gray-600">{HOURS}</p>
 
@@ -313,21 +316,28 @@ shadow-lg shadow-amber-500/20
                     <div className="hidden md:block h-full w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent mx-auto" />
 
                     {/* Columna derecha: mapa (oscuro por CSS) */}
-                    <div className="hidden md:col-span-1 md:block">
-                        <div className="relative">
-
-                            <div className="rounded-2xl overflow-hidden shadow-xl">
-                                <img
-                                    src={perfumeImg}
-                                    alt="Perfume elegante"
-                                    className="w-full h-[280px] md:h-[400px] object-cover"
+                    {/* Columna derecha: mapa (oscuro por CSS) */}
+                    <div className="md:col-span-1">
+                        <div className="rounded-xl overflow-hidden shadow-lg ring-1 ring-gray-200 bg-black">
+                            <div className="aspect-video md:aspect-[4/3] map-dark">
+                                <iframe
+                                    src={MAP_EMBED}
+                                    title="Ubicación en Google Maps"
+                                    className="w-full h-full border-0"
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    allowFullScreen
                                 />
                             </div>
-
-                            {/* efecto decorativo */}
-                            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-purple-200 rounded-full blur-3xl opacity-40"></div>
                         </div>
-
+                        <a
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="mt-3 inline-block text-sm text-purple-600 hover:text-purple-800"
+                        >
+                            Abrir en Google Maps →
+                        </a>
                     </div>
                 </div>
 
@@ -342,9 +352,9 @@ shadow-lg shadow-amber-500/20
   `}</style>
             </section>
             <section className="relative bg-white py-8 fade-in-section border-y border-gray-200">
-                <div className="relative z-10 overflow-hidden whitespace-nowrap mx-0 md:mx-[104px]">
+                {/*  <div className="relative z-10 overflow-hidden whitespace-nowrap mx-0 md:mx-[104px]">
                     <div className="brands-track will-change-transform">
-                        {/* Grupo 1 */}
+                 
                         <div className="brands-group">
                             <div className="brand-container">
                                 <img src={afnan} alt="Afnan" className="brand-img" />
@@ -378,7 +388,7 @@ shadow-lg shadow-amber-500/20
                             </div>
                         </div>
 
-                        {/* Grupo 2 (duplicado para scroll continuo) */}
+                    
                         <div className="brands-group" aria-hidden="true">
                             <div className="brand-container">
                                 <img src={afnan} alt="Afnan" className="brand-img" />
@@ -413,7 +423,7 @@ shadow-lg shadow-amber-500/20
                         </div>
                     </div>
                 </div>
-
+ */}
                 <style>{`
         .brands-track {
             display: inline-flex;
