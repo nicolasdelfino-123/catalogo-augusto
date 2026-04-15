@@ -36,7 +36,7 @@ export default function LoginAdmin() {
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="bg-white rounded-lg shadow-md w-96">
-                {/* Tabs */}
+                {/* 
                 <div className="flex border-b">
                     <button
                         onClick={() => {
@@ -62,7 +62,7 @@ export default function LoginAdmin() {
                     >
                         Cambiar Contraseña
                     </button>
-                </div>
+                </div> */}
 
                 {/* Contenido */}
                 <div className="p-6">
