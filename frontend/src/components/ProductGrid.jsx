@@ -6,7 +6,7 @@ import SidebarFilters from "./SidebarFilters"
 import Modal from "./Modal.jsx"
 import { ChevronRight, ChevronLeft } from "lucide-react"
 import { withWholesale } from "../utils/navigation";
-import { SLUG_TO_ID, SLUG_TO_NAME } from "../utils/perfumeCategories.js";
+import { getNormalizedCategoryId, SLUG_TO_ID, SLUG_TO_NAME } from "../utils/perfumeCategories.js";
 
 
 // --- Persistencia ligera en sessionStorage ---
@@ -132,7 +132,7 @@ export default function ProductGrid({ category, hideFilters = false }) {
     const products = store.products || [];
     if (hideFilters && !currentCategoryId) return products.slice(0, 12);
     if (!currentCategoryId) return products;
-    return products.filter(p => Number(p.category_id) === Number(currentCategoryId));
+    return products.filter((p) => getNormalizedCategoryId(p) === Number(currentCategoryId));
   }, [store.products, currentCategoryId, slug, category, hideFilters]);
 
   const brandOptions = useMemo(() => {

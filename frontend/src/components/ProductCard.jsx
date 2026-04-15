@@ -2,6 +2,7 @@ import { useState, useContext } from "react"
 import { Context } from "../js/store/appContext"
 import { useNavigate, useLocation } from "react-router-dom"
 import { formatPrice } from "../utils/price.js";
+import { getDisplayCategoryName } from "../utils/perfumeCategories.js";
 
 
 
@@ -164,7 +165,7 @@ export default function ProductCard({ product }) {
 
         {/* 3) Categoría */}
         <div className="text-[11px] sm:text-xs md:text-sm text-gray-500 mb-2 text-center">
-          {product.category_name}
+          {getDisplayCategoryName(product)}
         </div>
 
         {/* 4) Precio centrado */}

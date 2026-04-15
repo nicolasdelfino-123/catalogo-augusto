@@ -14,12 +14,12 @@ export const storeConfig = {
     },
 
     contact: {
-        whatsapp: "5493512479800",
+        whatsapp: "56964077278",
         whatsappMessage: "Hola, quiero consultar por un perfume del catálogo",
-        whatsappDisplay: "+54 9 351 247-9800",
+        whatsappDisplay: "+56 9 6407 7278",
 
-        instagram: "https://www.instagram.com/attarperfumesarabes/",
-        instagramDisplay: "@attarperfumesarabes",
+        instagram: "https://www.instagram.com/danna_decants_puq/",
+        instagramDisplay: "@danna_decants_puq",
 
         email: "nicolasdelfino585@gmail.com",
         /*  emailDisplay: "nicolasdelfino585@gmail.com", */

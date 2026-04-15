@@ -241,10 +241,6 @@ export default function Header() {
   const categoryIcons = {
     1: "🖤",
     2: "🌸",
-    3: "✨",
-    // 4: "🧴",
-    // 5: "🌸",
-    // 7: "🏷️",
   };
   const productCategories = PERFUME_CATEGORY_DEFINITIONS.map((category) => ({
     name: category.name,
@@ -342,8 +338,8 @@ export default function Header() {
   mt-[0px]          /* MOBILE: subir (-) / bajar (+) */
   md:mt-[0px]       /* DESKTOP */
 
-  h-[62px]          /* MOBILE: altura */
-  md:h-[63px]       /* DESKTOP */
+  h-[69px]          /* MOBILE: altura */
+  md:h-[66px]       /* DESKTOP */
 
   w-[250px]         /* MOBILE: ancho */
   md:w-[590px]      /* DESKTOP */

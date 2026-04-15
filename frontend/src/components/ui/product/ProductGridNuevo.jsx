@@ -10,7 +10,7 @@ import SidebarFiltersNuevo from "./SidebarFiltersNuevo.jsx";     // o "./Sidebar
 import Modal from "../../Modal.jsx";
 import { ChevronRight, ChevronLeft, ArrowUpDown } from "lucide-react";
 import { withWholesale } from "../../../utils/wholesaleMode.js";
-import { SLUG_TO_ID, SLUG_TO_NAME } from "../../../utils/perfumeCategories.js";
+import { getNormalizedCategoryId, SLUG_TO_ID, SLUG_TO_NAME } from "../../../utils/perfumeCategories.js";
 
 // -----------------------------
 // Persistencia ligera en sessionStorage
@@ -272,7 +272,7 @@ export default function ProductGridNuevo({ category, hideFilters = false }) {
 
         // Categoría actual
         return products.filter(
-            (p) => Number(p.category_id) === Number(currentCategoryId)
+            (p) => getNormalizedCategoryId(p) === Number(currentCategoryId)
         );
     }, [store.products, currentCategoryId, slug, category, hideFilters]);
 

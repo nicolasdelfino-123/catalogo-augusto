@@ -5,12 +5,7 @@ import ProductCard from '../components/ProductCard.jsx';
 import { useLocation } from "react-router-dom";
 import heroBg from '@/assets/hero-final-1.png'
 import banner1 from '@/assets/banner-1.png'
-import recargables from '@/assets/recargables.png'
-import celu from '@/assets/celu.png'
-import desechables from '@/assets/desechables.png'
 import perfumes from '@/assets/perfumes.png'
-import accesorios from '@/assets/accesorios.png'
-import liquidos from '@/assets/liquidos.png'
 import elfbar from '@/assets/elfbar2.jpeg'
 import ignite from '@/assets/ignite1.jpeg'
 import lostmary from '@/assets/lostmary1.png'
@@ -249,150 +244,52 @@ function Inicio() {
             <section className="py-6 md:py-10 fade-in-section" id="categorias-animadas">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* GRID GENERAL */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:max-w-5xl lg:mx-auto">
-
-                        {/* === PODS RECARGABLES === */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 lg:max-w-4xl lg:mx-auto">
                         <Link
-
-                            to={isWholesale ? "/mayorista/categoria/pods-recargables" : "/categoria/pods-recargables"}
-
-                            className="group relative block rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-36 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            aria-label="Ir a Pods Recargables"
+                            to={isWholesale ? "/mayorista/categoria/masculinos" : "/categoria/masculinos"}
+                            className="group relative block rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-40 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            aria-label="Ir a Masculinos"
                         >
-                            <div className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02] rounded-xl"
-                                style={{ backgroundImage: `url(${recargables})` }}
+                            <div
+                                className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02] rounded-xl"
+                                style={{ backgroundImage: `url(${perfumes})` }}
                                 aria-hidden
                             />
-                            <div className="absolute inset-0 bg-black/20 rounded-xl" aria-hidden />
-                            <div className="relative h-full flex items-center">
-                                <div className="px-5">
-                                    <h3 className="text-white text-xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
-                                        PODS<br />RECARGABLES
+                            <div className="absolute inset-0 bg-black/35 rounded-xl" aria-hidden />
+                            <div className="relative h-full flex items-end">
+                                <div className="px-5 py-5">
+                                    <h3 className="text-white text-2xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
+                                        Masculinos
                                     </h3>
-                                    <span className="inline-block mt-2 bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 rounded">
+                                    <span className="inline-block mt-3 bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 rounded">
                                         VER
                                     </span>
                                 </div>
                             </div>
                         </Link>
 
-                        {/* CELULARES */}
-                        {/* <Link
-        to="/categoria/celulares"
-        className="group relative block rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-36 focus:outline-none focus:ring-2 focus:ring-purple-500"
-        aria-label="Ir a Celulares"
-      >
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02] rounded-xl"
-          style={{ backgroundImage: `url(${celu})` }}
-          aria-hidden
-        />
-        <div className="absolute inset-0 bg-black/20 rounded-xl" aria-hidden />
-        <div className="relative h-full flex items-start">
-          <div className="px-5 py-4 flex flex-col gap-2 h-full">
-            <h3 className="text-white text-xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
-              CELULARES
-            </h3>
-            <span className="self-start bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 my-4 rounded">
-              VER
-            </span>
-          </div>
-        </div>
-      </Link> */}
-
-                        {/* === PODS DESECHABLES === */}
                         <Link
-                            to={isWholesale ? "/mayorista/categoria/vapes-desechables" : "/categoria/vapes-desechables"}
-                            className="group relative block rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-36 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            aria-label="Ir a Vapes Desechables"
+                            to={isWholesale ? "/mayorista/categoria/femeninos" : "/categoria/femeninos"}
+                            className="group relative block rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-40 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                            aria-label="Ir a Femeninos"
                         >
-                            <div className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02] rounded-xl"
-                                style={{ backgroundImage: `url(${desechables})` }}
-                                aria-hidden
-                            />
-                            <div className="absolute inset-0 bg-black/20 rounded-xl" aria-hidden />
-                            <div className="relative h-full flex items-center">
-                                <div className="px-5">
-                                    <h3 className="text-white text-xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
-                                        PODS<br />DESCARTABLES
-                                    </h3>
-                                    <span className="inline-block mt-2 bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 rounded">
-                                        VER
-                                    </span>
-                                </div>
-                            </div>
-                        </Link>
-
-                        {/* === PERFUMES === */}
-                        <Link
-                            to={isWholesale ? "/mayorista/categoria/perfumes" : "/categoria/perfumes"}
-                            className="group relative block rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-36 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            aria-label="Ir a Perfumes"
-                        >
-                            <div className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02] rounded-xl"
+                            <div
+                                className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02] rounded-xl"
                                 style={{ backgroundImage: `url(${perfumes})` }}
                                 aria-hidden
                             />
                             <div className="absolute inset-0 bg-black/20 rounded-xl" aria-hidden />
-                            <div className="relative h-full flex items-start">
-                                <div className="px-5 py-4 flex flex-col gap-2">
-                                    <h3 className="text-white text-xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
-                                        PERFUMES
+                            <div className="relative h-full flex items-end">
+                                <div className="px-5 py-5">
+                                    <h3 className="text-white text-2xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
+                                        Femeninos
                                     </h3>
-                                    <span className="self-start bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 my-4 rounded">
+                                    <span className="inline-block mt-3 bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 rounded">
                                         VER
                                     </span>
                                 </div>
                             </div>
                         </Link>
-
-                        {/* === FILA INFERIOR: RESISTENCIAS + LÍQUIDOS === */}
-                        <div className="col-span-full flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6 lg:mt-0">
-                            {/* RESISTENCIAS */}
-                            <Link
-                                to={isWholesale ? "/mayorista/categoria/resistencias" : "/categoria/resistencias"}
-                                className="group relative block rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-36 w-full sm:w-[20rem] md:w-[22rem] focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                aria-label="Ir a Resistencias"
-                            >
-                                <div className="absolute inset-0 rounded-xl overflow-hidden">
-                                    <div className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02]" style={{ backgroundImage: `url(${accesorios})` }} aria-hidden />
-                                    <div className="absolute inset-0 bg-black/20 rounded-xl" aria-hidden />
-                                </div>
-                                <div className="relative h-full flex items-start">
-                                    <div className="px-5 py-4 flex flex-col gap-2">
-                                        <h3 className="text-white text-xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
-                                            RESISTENCIAS
-                                        </h3>
-                                        <span className="self-start bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 my-4 rounded">
-                                            VER
-                                        </span>
-                                    </div>
-                                </div>
-                            </Link>
-
-                            {/* LÍQUIDOS */}
-                            <Link
-                                to={isWholesale ? "/mayorista/categoria/liquidos" : "/categoria/liquidos"}
-                                className="group relative block rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-36 w-full sm:w-[20rem] md:w-[22rem] focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                aria-label="Ir a Líquidos"
-                            >
-                                <div className="absolute inset-0 rounded-xl overflow-hidden">
-                                    <div className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02]" style={{ backgroundImage: `url(${liquidos})` }} aria-hidden />
-                                    <div className="absolute inset-0 bg-black/20 rounded-xl" aria-hidden />
-                                </div>
-                                <div className="relative h-full flex items-start">
-                                    <div className="px-5 py-4 flex flex-col gap-2">
-                                        <h3 className="text-white text-xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2_#0004]">
-                                            LÍQUIDOS
-                                        </h3>
-                                        <span className="self-start bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 my-4 rounded">
-                                            VER
-                                        </span>
-                                    </div>
-                                </div>
-                            </Link>
-                        </div>
-
                     </div>
                 </div>
             </section>
@@ -442,7 +339,7 @@ function Inicio() {
                     {/* Ver más productos */}
                     <div className="text-center mt-8">
                         <Link
-                            to="/categoria/vapes-desechables"
+                            to="/products"
                             onClick={() => {
                                 // Espera un instante al cambio de ruta antes de hacer scroll
                                 setTimeout(() => {

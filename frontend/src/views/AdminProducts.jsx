@@ -8,6 +8,7 @@ import AdminBudgetSelectionCell from "../components/admin/AdminBudgetSelectionCe
 import AdminBudgetModal from "../components/admin/AdminBudgetModal.jsx";
 import {
     CATEGORY_ID_TO_NAME as ID_TO_CATEGORY_NAME,
+    getDisplayCategoryName,
     mapCategoryIdFromName,
     PERFUME_CATEGORY_DEFINITIONS,
     PERFUME_CATEGORY_NAMES,
@@ -1351,7 +1352,7 @@ export default function AdminProducts() {
                                         stock: it.stock || 0,
                                         image_url: it.image_url || "",
                                         category_id: catId,
-                                        category_name: ID_TO_CATEGORY_NAME[catId] || "Fragancias de Hombre",
+                                        category_name: ID_TO_CATEGORY_NAME[catId] || "Masculinos",
                                         flavor_enabled: catalog.length > 0,
                                         flavor_catalog: catalog, // ✅ catálogo completo para edición
                                         flavors: catalog.map((x) => x.name), // ✅ todos los sabores como activos por defecto
@@ -2498,7 +2499,7 @@ export default function AdminProducts() {
                                 setForm({
                                     ...form,
                                     category_id: categoryId,
-                                    category_name: ID_TO_CATEGORY_NAME[categoryId] || "Fragancias de Hombre",
+                                    category_name: ID_TO_CATEGORY_NAME[categoryId] || "Masculinos",
                                     flavor_enabled: show,
                                     flavors: show ? form.flavors || [] : [],
                                 })
@@ -2699,7 +2700,7 @@ export default function AdminProducts() {
                                     {importPreview.map((p, idx) => (
                                         <tr key={idx} className="border-t">
                                             <td className="p-2">{p.name}</td>
-                                            <td className="p-2">{p.category_name}</td>
+                                            <td className="p-2">{getDisplayCategoryName(p)}</td>
                                             <td className="p-2">${p.price}</td>
                                             <td className="p-2">{p.stock}</td>
                                             <td className="p-2">{p.flavor_catalog?.length || 0}</td>

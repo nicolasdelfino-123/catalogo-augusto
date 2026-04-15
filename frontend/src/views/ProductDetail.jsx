@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { formatPrice } from "../utils/price.js";
 import { Context } from '../js/store/appContext.jsx';
 import sinImagen from '@/assets/sin_imagen.jpg'
-import { NAME_TO_SLUG } from "../utils/perfumeCategories.js";
+import { getDisplayCategoryName, NAME_TO_SLUG } from "../utils/perfumeCategories.js";
 
 
 // --- helpers de sabores ---
@@ -329,7 +329,7 @@ const ProductDetail = () => {
                             </div>
 
                             <div className="mb-6">
-                                <p className="text-sm text-gray-500">Categoría: {product.category_name}</p>
+                                <p className="text-sm text-gray-500">Categoría: {getDisplayCategoryName(product)}</p>
                             </div>
 
                             {product.description && (

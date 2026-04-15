@@ -3,9 +3,6 @@ import { Context } from '../js/store/appContext.jsx';
 import { Link } from "react-router-dom";
 import ProductGrid from '../components/ProductGrid.jsx';
 import heroBg from '@/assets/hero-bg.png'
-import recargables from '@/assets/recargables.png'
-import celu from '@/assets/celu.png'
-import desechables from '@/assets/desechables.png'
 import perfumes from '@/assets/perfumes.png'
 
 
@@ -110,131 +107,64 @@ function Home() {
           {/* Categorías (cards con imagen + botón VER) */}
           <section className="py-6 md:py-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-
-                {/* PODS RECARGABLES */}
-                <div className="group relative rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-36">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02]"
-                    style={{ backgroundImage: `url(${recargables})` }}
-                    aria-hidden
-                  />
-                  <div className="absolute inset-0 bg-black/20" aria-hidden />
-                  <div className="relative h-full flex items-center">
-                    <div className="px-5">
-                      <Link
-                        to="/categoria/pods-recargables"
-                        className="inline-block"
-                        aria-label="Ir a Pods Recargables"
-                      >
-                        <h3 className="text-white text-xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
-                          PODS<br />RECARGABLES
-                        </h3>
-                      </Link>
-                      <Link
-                        to="/categoria/pods-recargables"
-                        className="inline-block mt-2 bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 rounded"
-                      >
-                        VER
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CELULARES */}
-                <div className="group relative rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-36">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02]"
-                    style={{ backgroundImage: `url(${celu})` }}
-                    aria-hidden
-                  />
-                  <div className="absolute inset-0 bg-black/20" aria-hidden />
-
-                  {/* dentro de la card */}
-                  <div className="relative h-full flex items-start">   {/* nada de items-center */}
-                    <div className="px-5 py-4 flex flex-col gap-2 h-full">  {/* columna con pequeño gap */}
-                      <Link
-                        to="/categoria/celulares"
-                        className="block"
-                        aria-label="Ir a Celulares"
-                      >
-                        <h3 className="text-white text-xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
-                          CELULARES
-                        </h3>
-                      </Link>
-
-                      <Link
-                        to="/categoria/celulares"
-                        className="self-start bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 my-4 rounded"
-                      >
-                        VER
-                      </Link>
-                    </div>
-                  </div>
-
-
-                </div>
-
-                {/* PODS DESCARTABLES */}
-                <div className="group relative rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-36">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02]"
-                    style={{ backgroundImage: `url(${desechables})` }}
-                    aria-hidden
-                  />
-                  <div className="absolute inset-0 bg-black/20" aria-hidden />
-                  <div className="relative h-full flex items-center">
-                    <div className="px-5">
-                      <Link
-                        to="/categoria/pods-descartables"
-                        className="inline-block"
-                        aria-label="Ir a Pods Descartables"
-                      >
-                        <h3 className="text-white text-xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
-                          PODS<br />DESCARTABLES
-                        </h3>
-                      </Link>
-                      <Link
-                        to="/categoria/pods-descartables"
-                        className="inline-block mt-2 bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 rounded"
-                      >
-                        VER
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* PERFUMES */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 <div className="group relative rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-36">
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02]"
                     style={{ backgroundImage: `url(${perfumes})` }}
                     aria-hidden
                   />
-                  <div className="absolute inset-0 bg-black/20" aria-hidden />
-                  <div className="relative h-full flex items-start">
+                  <div className="absolute inset-0 bg-black/30" aria-hidden />
+                  <div className="relative h-full flex items-end">
                     <div className="px-5 py-4 flex flex-col gap-2">
                       <Link
-                        to="/categoria/perfumes"
+                        to="/categoria/masculinos"
                         className="block"
-                        aria-label="Ir a Perfumes"
+                        aria-label="Ir a Masculinos"
                       >
                         <h3 className="text-white text-xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
-                          PERFUMES
+                          Masculinos
                         </h3>
                       </Link>
 
                       <Link
-                        to="/categoria/perfumes"
-                        className="self-start bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 my-4 rounded"
+                        to="/categoria/masculinos"
+                        className="self-start bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 rounded"
                       >
                         VER
                       </Link>
                     </div>
                   </div>
-
                 </div>
 
+                <div className="group relative rounded-xl overflow-hidden shadow-md h-28 sm:h-32 md:h-36">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-200 group-hover:scale-[1.02]"
+                    style={{ backgroundImage: `url(${perfumes})` }}
+                    aria-hidden
+                  />
+                  <div className="absolute inset-0 bg-black/15" aria-hidden />
+                  <div className="relative h-full flex items-end">
+                    <div className="px-5 py-4 flex flex-col gap-2">
+                      <Link
+                        to="/categoria/femeninos"
+                        className="block"
+                        aria-label="Ir a Femeninos"
+                      >
+                        <h3 className="text-white text-xl font-extrabold uppercase leading-tight drop-shadow-[0_2px_2px_rgba(0,0,0,0.25)]">
+                          Femeninos
+                        </h3>
+                      </Link>
+
+                      <Link
+                        to="/categoria/femeninos"
+                        className="self-start bg-yellow-300 text-black font-extrabold text-sm px-3 py-1 rounded"
+                      >
+                        VER
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
