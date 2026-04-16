@@ -25,11 +25,13 @@ def create_app():
     """
     enviroment = os.getenv("FLASK_ENV", "production")
 
+
     if enviroment == "production":
-        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-        static_folder = os.path.join(base_path, "frontend", "dist")
+        static_folder = os.getenv("STATIC_FOLDER", "frontend/dist")
     else:
         static_folder = "frontend/dist"
+
+
     app = Flask(__name__, static_folder=static_folder, static_url_path="/")
 
     # Configuración básica según entorno
