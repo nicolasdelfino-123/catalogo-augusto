@@ -576,7 +576,7 @@ Pago: ${customerData.payment}
               <p className="text-sm font-serif tracking-wide mb-3 text-gray-800">Forma de pago</p>
 
               <div className="space-y-2 text-sm">
-                {["Transferencia", "Efectivo", "Coordinar"].map(method => {
+                {["Retiro en Stand del Mall", "Reparto a domicilio (días martes)", "Coordinar"].map(method => {
                   const selected = customerData.payment === method;
 
                   return (

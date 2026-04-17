@@ -97,7 +97,7 @@ export default function InicioNuevo() {
 
 
             {/* HERO PREMIUM CON IMAGEN IMPORTADA */}
-            <section className="relative h-[400px] sm:h-[420px] md:h-[75vh] flex items-center justify-center text-center overflow-hidden bg-[#0B0608]">
+            <section className="relative h-[400px] sm:h-[420px] md:h-[75vh]  flex items-center justify-center text-center overflow-hidden bg-[#0B0608]">
 
                 {/* Fondo con tu imagen */}
                 <div
@@ -114,7 +114,9 @@ export default function InicioNuevo() {
 
 sm:bg-[length:100%_auto]   /* tamaño imagen */
 sm:bg-center              /* centrado horizontal */
-md:bg-[center_top_-700px]  /* mover vertical */
+lg:bg-[center_top_-650px]
+ipad:bg-[center_top_-270px]
+ /* mover vertical */
 
   /* ================= EFECTOS ================= */
 
@@ -135,7 +137,8 @@ relative z-10 px-6 max-w-3xl
 
 mt-[290px]        /* MOBILE mover bloque */
 sm:mt-[180px]
-md:mt-[350px]     /* DESKTOP mover bloque */
+md:mt-[350px]
+ipad:mt-[720px]     /* DESKTOP mover bloque */
 ">
 
                     <h1 className="
@@ -260,7 +263,7 @@ shadow-lg shadow-amber-500/20
                 <Asesoria />
             </section> */}
             <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id='asesoria'>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
                     {/* Columna izquierda: texto */}
                     <div className="md:col-span-1 text-center md:text-left">
                         <span className="inline-block text-lg tracking-wider font-semibold text-gray-700 bg-purple-50 border border-purple-100 rounded-full px-3 py-1">

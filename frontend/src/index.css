@@ -223,7 +223,7 @@ input:not([type="checkbox"]):not([type="range"]),
 select,
 textarea,
 button:not(header button):not(.text-white):not(.bg-transparent) {
-  background-color: #ffffff !important;
+
   color: #111827 !important;
   color-scheme: light !important;
   -webkit-appearance: none !important;

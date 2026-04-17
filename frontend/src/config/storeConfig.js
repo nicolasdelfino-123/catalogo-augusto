@@ -32,7 +32,7 @@ export const storeConfig = {
     },
 
     media: {
-        heroImage: "f2.jpeg",
+        heroImage: "f4.jpeg",
         footerLogo: "logo_danna.jpeg",
     },
 
