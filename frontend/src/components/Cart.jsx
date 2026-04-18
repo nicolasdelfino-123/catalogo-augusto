@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Context } from "../js/store/appContext.jsx";
 import { useNavigate, useLocation } from "react-router-dom";
+import { storeConfig } from "../config/storeConfig.js";
 
 
 const API = import.meta.env.VITE_BACKEND_URL?.replace(/\/+$/, "") || "";
@@ -170,7 +171,7 @@ export default function Cart({ isOpen: controlledOpen, onClose: controlledOnClos
 
     localStorage.setItem("customerData", JSON.stringify(customerData));
 
-    const phone = "56964077278"; // ⚠️ CAMBIAR POR EL NÚMERO DEL CLIENTE
+    const phone = storeConfig.contact.whatsapp; // ⚠️ CAMBIAR POR EL NÚMERO DEL CLIENTE
 
     const orderText = buildWhatsAppMessage();
 
@@ -576,7 +577,7 @@ Pago: ${customerData.payment}
               <p className="text-sm font-serif tracking-wide mb-3 text-gray-800">Forma de pago</p>
 
               <div className="space-y-2 text-sm">
-                {["Retiro en Stand del Mall", "Reparto a domicilio (días martes)", "Coordinar"].map(method => {
+                {["Transferencia", "Efectivo", "Coordinar"].map(method => {
                   const selected = customerData.payment === method;
 
                   return (
