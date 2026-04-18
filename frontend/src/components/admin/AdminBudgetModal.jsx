@@ -531,7 +531,7 @@ export default function AdminBudgetModal({
                         <label className="block">
                             <span className="block text-sm font-medium text-stone-700 mb-1">WhatsApp del cliente</span>
                             <div className="flex items-center border rounded-lg overflow-hidden">
-                                <span className="px-3 py-2 bg-stone-50 text-stone-600 border-r">+56</span>
+                                <span className="px-3 py-2 bg-stone-50 text-stone-600 border-r">+54</span>
                                 <input
                                     type="text"
                                     inputMode="numeric"
@@ -565,7 +565,7 @@ export default function AdminBudgetModal({
                                 type="button"
                                 disabled={!canSend}
                                 onClick={() => {
-                                    const fullPhone = `56${normalizeDigits(phone)}`;
+                                    const fullPhone = `54${normalizeDigits(phone)}`;
                                     const url = `https://wa.me/${fullPhone}?text=${encodeURIComponent(messagePreview)}`;
                                     window.open(url, "_blank", "noopener,noreferrer");
                                 }}
