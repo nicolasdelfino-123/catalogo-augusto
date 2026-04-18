@@ -1,9 +1,9 @@
 export const storeConfig = {
-    storeName: "Danna Perfumes",
+    storeName: " Estilo Fenix Perfumes",
 
     branding: {
-        heroTitle: "Amor y felicidad en botellitas pequeñas",
-        heroSubtitle: "Decants de Perfumes Originales",
+        heroTitle: "Perfumes Árabes Originales en Argentina",
+        heroSubtitle: "Elegí cómo querés que te recuerden",
         /*       footerText: "Perfumes árabes originales en Argentina.", */
     },
 
