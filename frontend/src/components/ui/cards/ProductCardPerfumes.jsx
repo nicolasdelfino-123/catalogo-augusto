@@ -238,54 +238,60 @@ export default function ProductCardPerfumes({ product, returnTo, isGrid = true }
         navigate(`${prefix}/product/${product.id}`, { state });
     };
     return (
-        <div className="group bg-white rounded-xl border border-stone-100 shadow-sm hover:shadow-md hover:border-stone-200 transition-all duration-300 flex flex-col h-full">
+        <div className="group bg-white rounded-xl border border-stone-100 shadow-sm hover:shadow-md hover:border-stone-200 transition-all duration-300 flex flex-col h-full min-h-[420px] ">
 
             {/* Imagen */}
             <div
                 onClick={handleProductClick}
-                className="aspect-square bg-gradient-to-b from-white to-stone-50 flex items-center justify-center p-2 sm:p-4 lg:p-5 cursor-pointer overflow-hidden"
+                className="
+        h-[260px] sm:h-[300px] lg:h-[450px]
+        bg-gradient-to-b from-white to-stone-50
+        flex items-center justify-center
+        cursor-pointer overflow-hidden
+        rounded-xl -mb-3 sm:mb-4
+   
+        
+    "
             >
                 <img
                     src={toAbsUrl(product?.image_url) || sinImagen}
-                    alt={product?.name || "Producto"}
-                    className="h-full w-full object-contain scale-[1.12] sm:scale-[1.08] transition-transform duration-500 ease-out group-hover:scale-[1.16] sm:group-hover:scale-[1.12]"
-                    onError={(e) => { e.currentTarget.src = sinImagen; }}
+                    className="w-full h-full object-cover"
                 />
             </div>
 
             {/* CONTENIDO */}
-            <div className="p-3 sm:p-5 flex flex-col flex-grow">
+            <div className="pt-0 pb-3 px-3 sm:pt-1 sm:pb-5 sm:px-5 flex flex-col flex-grow">
+                <div className="mt-auto">
+                    {/* Nombre */}
+                    <h3
+                        onClick={handleProductClick}
+                        className="text-sm sm:text-lg font-semibold text-stone-900 tracking-wide cursor-pointer hover:text-black line-clamp-2 text-center"
+                    >
+                        {product.name}
+                    </h3>
 
-                {/* Nombre */}
-                <h3
-                    onClick={handleProductClick}
-                    className="text-sm sm:text-lg font-semibold text-stone-900 tracking-wide cursor-pointer hover:text-black line-clamp-2 text-center"
-                >
-                    {product.name}
-                </h3>
-
-                {/* Categoría */}
-                <p className="text-[10px] sm:text-xs text-stone-400 uppercase tracking-widest mt-1 text-center">
+                    {/* Categoría */}
+                    {/* {<p className="text-[10px] sm:text-xs text-stone-400 uppercase tracking-widest mt-1 text-center">
                     {displayCategoryName}
                 </p>
-
-                {/* Precio */}
-                <div className="mt-2 sm:mt-4 text-center">
-                    {finalPrice !== null ? (
-                        <span className="text-lg sm:text-xl font-semibold text-black tracking-tight">
-                            {pricePrefix}{formatPrice(finalPrice)}
-                        </span>
-                    ) : (
-                        <span className="text-xs text-stone-400 italic">
-                            Consultar
-                        </span>
-                    )}
+                } */}
+                    {/* Precio */}
+                    <div className="mt-2 sm:mt-4 text-center">
+                        {finalPrice !== null ? (
+                            <span className="text-lg sm:text-xl font-semibold text-black tracking-tight">
+                                {pricePrefix}{formatPrice(finalPrice)}
+                            </span>
+                        ) : (
+                            <span className="text-xs text-stone-400 italic">
+                                Consultar
+                            </span>
+                        )}
+                    </div>
                 </div>
 
-                {/* Acciones */}
-                <div className="mt-3 sm:mt-6 pt-3 sm:pt-4 border-t border-stone-200 mt-auto">
+                <div className="mt-1 sm:mt-2 pt-3 sm:pt-4 border-t border-stone-200">
 
-                    {hasVolume && (
+                    {/* {hasVolume && (
                         <div className="flex items-center justify-between mb-2 sm:mb-3">
                             <span className="text-[10px] sm:text-xs text-stone-600 uppercase tracking-wide">
                                 Tamaño
@@ -311,7 +317,7 @@ export default function ProductCardPerfumes({ product, returnTo, isGrid = true }
                         </div>
                     )}
 
-                    {/* Cantidad */}
+                 
                     <div className="flex items-center justify-between mb-2 sm:mb-4">
                         <span className="text-[10px] sm:text-xs text-stone-600 uppercase tracking-wide">
                             Cantidad
@@ -327,7 +333,7 @@ export default function ProductCardPerfumes({ product, returnTo, isGrid = true }
                                 <option key={i + 1}>{i + 1}</option>
                             ))}
                         </select>
-                    </div>
+                    </div> */}
 
                     {/* Botón */}
                     <button

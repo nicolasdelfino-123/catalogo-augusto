@@ -384,30 +384,43 @@ export default function ProductDetailNuevo() {
                 <div className="bg-stone-50 border border-stone-200 rounded-2xl shadow-sm p-4 sm:p-8 grid md:grid-cols-2 gap-8">
 
                     {/* IMAGEN */}
-                    <div>
-                        <div className="bg-white border border-stone-200 rounded-xl p-4 sm:p-6">
-                            <img
-                                src={toAbsUrl(activeImg) || sinImagen}
-                                className="w-full object-contain"
-                                onError={e => (e.currentTarget.src = sinImagen)}
-                            />
-                        </div>
+                    <div className="flex flex-col md:flex-row-reverse gap-4">
 
                         {gallery.length > 1 && (
-                            <div className="flex gap-2 mt-3 flex-wrap">
+                            <div className="order-2 md:order-1 flex md:flex-col gap-2 mt-3 md:mt-0 md:w-[72px] md:shrink-0">
                                 {gallery.map((u, i) => (
                                     <img
                                         key={i}
                                         src={toAbsUrl(u)}
                                         onClick={() => setActiveImg(u)}
-                                        className={`w-16 h-16 object-contain border rounded p-1 cursor-pointer transition ${activeImg === u ? "border-black" : "border-stone-300 hover:border-stone-500"
+                                        className={`w-16 h-16 object-contain border rounded p-1  cursor-pointer transition ${activeImg === u ? "border-black" : "border-stone-300 hover:border-stone-500"
                                             }`}
                                     />
                                 ))}
                             </div>
                         )}
-                    </div>
 
+                        <div
+                            className=" order-1 md:order-2
+-mx-4 sm:-mx-8 md:mx-0
+-mt-4 sm:-mt-8 md:mt-0
+-mb-4 md:mb-0
+overflow-hidden
+rounded-2xl
+md:h-[620px]
+flex-1
+bg-white
+
+"
+                        >
+                            <img
+                                src={toAbsUrl(activeImg) || sinImagen}
+                                className="block w-full h-auto md:w-full md:h-full md:object-cover"
+                                onError={e => (e.currentTarget.src = sinImagen)}
+                            />
+                        </div>
+
+                    </div>
                     {/* INFO */}
                     <div>
                         <h1 className="text-2xl sm:text-3xl font-serif font-semibold text-[#232325] mb-4 tracking-wide">{product.name}</h1>
