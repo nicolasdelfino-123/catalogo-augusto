@@ -136,7 +136,7 @@ export default function ProductGridNuevo({ category, hideFilters = false }) {
         Number(searchParams.get("page")) || 1
     );
     const [sortOrder, setSortOrder] = useState("default"); // default | price-asc | price-desc
-    const [cardsPerRow, setCardsPerRow] = useState(4);
+    const [cardsPerRow, setCardsPerRow] = useState(3);
     const [mobileSortOpen, setMobileSortOpen] = useState(false);
 
     // Persistencia por categoría
@@ -212,7 +212,7 @@ export default function ProductGridNuevo({ category, hideFilters = false }) {
                         : saved.itemsPerPage);
 
             setItemsPerPage(restoredItemsPerPage);
-            setCardsPerRow(saved.cardsPerRow ?? 4);
+            setCardsPerRow(3);
 
             const forcedPage = Number(sessionStorage.getItem("lastProductPage"));
             if (Number.isFinite(forcedPage) && forcedPage > 0) {
@@ -453,7 +453,7 @@ export default function ProductGridNuevo({ category, hideFilters = false }) {
                 selectedBrands,
                 selectedMls,
                 itemsPerPage,
-                cardsPerRow,
+                cardsPerRow: 3,
                 currentPage,
                 sortOrder,
 
@@ -523,7 +523,7 @@ export default function ProductGridNuevo({ category, hideFilters = false }) {
         const base = isWholesale ? "/mayorista" : "";
 
         window.scrollTo({ top: 0, behavior: "auto" });
-        navigate(`${base}/categoria/${newSlug}`);
+        navigate(`${base}/${newSlug}`);
     };
 
 

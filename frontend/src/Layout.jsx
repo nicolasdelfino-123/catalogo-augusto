@@ -169,10 +169,12 @@ const Layout = () => {
 
           {/* Productos (NUEVO GRID) */}
           <Route path="/products" element={<ProductGridNuevo />} />
+          <Route path="/fragancias-exclusivas" element={<ProductGridNuevo />} />
           <Route path="/categoria/:slug" element={<ProductGridNuevo />} />
 
           {/* Mayorista productos (NUEVO GRID) */}
           {/*     <Route path="/mayorista/products" element={<ProductGridNuevo />} /> */}
+          <Route path="/mayorista/fragancias-exclusivas" element={<Mayorista />} />
           <Route path="/mayorista/categoria/:slug" element={<Mayorista />} />
 
           {/* 🔥 RUTA BASE MAYORISTA (CLAVE) */}

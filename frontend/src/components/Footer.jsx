@@ -39,7 +39,7 @@ const Footer = () => {
                                 {FOOTER_CATEGORIES.map((c) => (
                                     <li key={c.slug}>
                                         <Link
-                                            to={withWholesale(`/categoria/${c.slug}`)}
+                                            to={withWholesale(`/${c.slug}`)}
                                             state={{ fromFooter: true }}     // 👈 Marca que viene desde el footer
                                             className="relative hover:text-amber-300 transition-all duration-300 after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-amber-400 after:transition-all after:duration-300 hover:after:w-full"
                                         >

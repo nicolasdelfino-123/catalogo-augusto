@@ -14,12 +14,12 @@ export const storeConfig = {
     },
 
     contact: {
-        whatsapp: "5493534793366",
+        whatsapp: "5492213538035",
         whatsappMessage: "Hola, quiero consultar por un perfume del catálogo",
-        whatsappDisplay: "+56 9 6407 7278",
+        whatsappDisplay: "+56 9 221 353 8035",
 
-        instagram: "https://www.instagram.com/danna_decants_puq/",
-        instagramDisplay: "@danna_decants_puq",
+        instagram: "https://www.instagram.com/arabes.arg/",
+        instagramDisplay: "@arabes.arg",
 
         email: "nicolasdelfino585@gmail.com",
         /*  emailDisplay: "nicolasdelfino585@gmail.com", */
@@ -32,8 +32,8 @@ export const storeConfig = {
     },
 
     media: {
-        heroImage: "f3_si.png",
-        footerLogo: "logo_danna.jpeg",
+        heroImage: "logo_augusto.png",
+        footerLogo: "logo_augusto.png",
     },
 
     map: {

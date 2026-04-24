@@ -6,20 +6,7 @@ import HomeContact from "../components/home/HomeContact.jsx";
 import banner from "../assets/banner_arabe.jpg";
 import Asesoria from "../components/Asesoria.jsx";
 import { storeConfig } from "../config/storeConfig";
-import perfumeImg from "../assets/latta_si.webp";
 import { getNormalizedCategoryId } from "../utils/perfumeCategories.js";
-
-import afnan from '../assets/afnan.webp'
-import al from '../assets/al.webp'
-import alhara from '../assets/alhara.png'
-import armaf from '../assets/armaf.webp'
-import bharara from '../assets/bharara.webp'
-import french from '../assets/french.webp'
-
-import lattafa from '../assets/lattafa.png'
-import maison from '../assets/maison.jpg'
-import rasasi from '../assets/rasasi.png'
-import ray from '../assets/raysi.jpg'
 
 export default function InicioNuevo() {
     const { store, actions } = useContext(Context);
@@ -49,23 +36,10 @@ export default function InicioNuevo() {
         const price = Number(product?.price);
         return Number.isFinite(price) ? price : Number.POSITIVE_INFINITY;
     };
-    const isWomenFragrance = (product) => getNormalizedCategoryId(product) === 2;
-    const isMenFragrance = (product) => getNormalizedCategoryId(product) === 1;
-
-    const womenFeatured = allProducts
-        .filter(isWomenFragrance)
+    const featuredProducts = allProducts
+        .filter((product) => getNormalizedCategoryId(product) === 1)
         .sort((a, b) => getProductPrice(a) - getProductPrice(b))
-        .slice(0, 6);
-    const menFeatured = allProducts
-        .filter(isMenFragrance)
-        .sort((a, b) => getProductPrice(a) - getProductPrice(b))
-        .slice(0, 6);
-    const selectedFeaturedIds = new Set([...womenFeatured, ...menFeatured].map((p) => p.id));
-    const featuredProducts = [
-        ...womenFeatured,
-        ...menFeatured,
-        ...allProducts.filter((p) => !selectedFeaturedIds.has(p.id)).slice(0, Math.max(0, 12 - (womenFeatured.length + menFeatured.length))),
-    ].slice(0, 12);
+        .slice(0, 12);
 
 
     useLayoutEffect(() => {
@@ -272,7 +246,7 @@ export default function InicioNuevo() {
             <section className="max-w-7xl mx-auto px-2 sm:px-4 py-12">
                 <div className="text-center mb-10">
                     <h2 className="text-2xl md:text-3xl font-serif font-semibold tracking-wide">
-                        Productos destacados
+                        Fragancias Exclusivas
                     </h2>
 
                     <div className="w-16 h-[2px] bg-amber-500 mx-auto mt-4"></div>
@@ -296,7 +270,7 @@ export default function InicioNuevo() {
             </section>
             <div className="flex justify-center mt-0 mb-1 lg:px-12 lg:py-12">
                 <div
-                    onClick={() => navigate(location.pathname.startsWith("/mayorista") ? "/mayorista/products" : "/products")}
+                    onClick={() => navigate(location.pathname.startsWith("/mayorista") ? "/mayorista/fragancias-exclusivas" : "/fragancias-exclusivas")}
                     className="
 cursor-pointer
 px-8 py-3
@@ -314,15 +288,15 @@ transition-all duration-500
 shadow-lg shadow-amber-500/20
 "
                 >
-                    Explorar todas las categorías
+                    Explorar Todas Las Fragancias
                 </div>
             </div>
             {/*  <section id="asesoria">
                 <Asesoria />
             </section> */}
             <section className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" id='asesoria'>
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
-                    {/* Columna izquierda: texto */}
+                {/*  <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+                 
                     <div className="md:col-span-1 text-center md:text-left">
                         <span className="inline-block text-lg tracking-wider font-semibold text-gray-700 bg-purple-50 border border-purple-100 rounded-full px-3 py-1">
                             ¡Contactanos!
@@ -340,7 +314,7 @@ shadow-lg shadow-amber-500/20
 
                         <div className="mt-6 flex justify-center md:justify-center gap-4">
 
-                            {/* Instagram */}
+          
                             <a
                                 href={IG_URL}
                                 target="_blank"
@@ -354,7 +328,7 @@ shadow-lg shadow-amber-500/20
                                 </svg>
                             </a>
 
-                            {/* WhatsApp */}
+                          
                             <a
                                 href={WA_URL}
                                 target="_blank"
@@ -370,11 +344,8 @@ shadow-lg shadow-amber-500/20
                         </div>
                     </div>
 
-                    {/* Divider central (sólo desktop) */}
                     <div className="hidden md:block h-full w-px bg-gradient-to-b from-transparent via-gray-300 to-transparent mx-auto" />
 
-                    {/* Columna derecha: mapa (oscuro por CSS) */}
-                    {/* Columna derecha: mapa (oscuro por CSS) */}
                     <div className="md:col-span-1">
                         <div className="rounded-xl overflow-hidden shadow-lg ring-1 ring-gray-200 bg-black">
                             <div className="aspect-video md:aspect-[4/3] map-dark">
@@ -397,9 +368,8 @@ shadow-lg shadow-amber-500/20
                             Abrir en Google Maps →
                         </a>
                     </div>
-                </div>
+                </div> */}
 
-                {/* Filtro para “estilo oscuro” del iframe (sin API key) */}
                 <style>{`
     .map-dark iframe {
       /* Ajustá estos valores si querés más/menos contraste */

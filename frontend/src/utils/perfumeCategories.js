@@ -1,21 +1,21 @@
 export const PERFUME_CATEGORY_DEFINITIONS = [
-    { id: 1, name: "Masculinos", slug: "masculinos" },
-    { id: 2, name: "Femeninos", slug: "femeninos" },
+    { id: 1, name: "Fragancias Exclusivas", slug: "fragancias-exclusivas" },
 ];
 
 export const PERFUME_CATEGORY_NAMES = PERFUME_CATEGORY_DEFINITIONS.map((category) => category.name);
 
 export const CATEGORY_ID_TO_NAME = {
-    1: "Masculinos",
-    2: "Femeninos",
-    3: "Femeninos",
-    4: "Masculinos",
-    5: "Femeninos",
-    6: "Masculinos",
-    7: "Masculinos",
+    1: "Fragancias Exclusivas",
+    2: "Fragancias Exclusivas",
+    3: "Fragancias Exclusivas",
+    4: "Fragancias Exclusivas",
+    5: "Fragancias Exclusivas",
+    6: "Fragancias Exclusivas",
+    7: "Fragancias Exclusivas",
 };
 
 export const CATEGORY_NAME_TO_ID = {
+    "Fragancias Exclusivas": 1,
     Masculinos: 1,
     "Perfumes masculinos": 1,
     "Perfumes Masculinos": 1,
@@ -25,106 +25,92 @@ export const CATEGORY_NAME_TO_ID = {
     "Perfumes de Disenador": 1,
     Resistencias: 1,
     Perfumes: 1,
-    Femeninos: 2,
-    "Fragancias de Mujer": 2,
-    "Pods Recargables": 2,
-    "Productos Karseell": 2,
-    Unisex: 2,
-    "Líquidos": 2,
-    Celulares: 2,
-    "Body splash victoria secret": 2,
-    "Body Splash Victoria Secret": 2,
+    Femeninos: 1,
+    "Fragancias de Mujer": 1,
+    "Pods Recargables": 1,
+    "Productos Karseell": 1,
+    Unisex: 1,
+    "Líquidos": 1,
+    Celulares: 1,
+    "Body splash victoria secret": 1,
+    "Body Splash Victoria Secret": 1,
 };
 
 export const LEGACY_CATEGORY_NAME_TO_CURRENT = {
-    "Fragancias de Hombre": "Masculinos",
-    "Fragancias de Mujer": "Femeninos",
-    "Vapes Desechables": "Masculinos",
-    "Pods Recargables": "Femeninos",
-    "Líquidos": "Femeninos",
-    Resistencias: "Masculinos",
-    Celulares: "Femeninos",
-    Perfumes: "Masculinos",
-    "Productos Karseell": "Femeninos",
-    Unisex: "Femeninos",
-    "Body splash victoria secret": "Femeninos",
-    "Body Splash Victoria Secret": "Femeninos",
-    "Perfumes de Diseñador": "Masculinos",
-    "Perfumes de Disenador": "Masculinos",
+    Masculinos: "Fragancias Exclusivas",
+    Femeninos: "Fragancias Exclusivas",
+    "Fragancias de Hombre": "Fragancias Exclusivas",
+    "Fragancias de Mujer": "Fragancias Exclusivas",
+    "Vapes Desechables": "Fragancias Exclusivas",
+    "Pods Recargables": "Fragancias Exclusivas",
+    "Líquidos": "Fragancias Exclusivas",
+    Resistencias: "Fragancias Exclusivas",
+    Celulares: "Fragancias Exclusivas",
+    Perfumes: "Fragancias Exclusivas",
+    "Productos Karseell": "Fragancias Exclusivas",
+    Unisex: "Fragancias Exclusivas",
+    "Body splash victoria secret": "Fragancias Exclusivas",
+    "Body Splash Victoria Secret": "Fragancias Exclusivas",
+    "Perfumes de Diseñador": "Fragancias Exclusivas",
+    "Perfumes de Disenador": "Fragancias Exclusivas",
 };
 
 export const SLUG_TO_NAME = {
-    masculinos: "Masculinos",
-    femeninos: "Femeninos",
-    "perfumes-masculinos": "Masculinos",
-    perfumes: "Masculinos",
-    "vapes-desechables": "Masculinos",
-    resistencias: "Masculinos",
-    "perfumes-de-disenador": "Masculinos",
-    "pods-recargables": "Femeninos",
-    unisex: "Femeninos",
-    liquidos: "Femeninos",
-    celulares: "Femeninos",
-    "body-splash-victoria-secret": "Femeninos",
+    "fragancias-exclusivas": "Fragancias Exclusivas",
+    masculinos: "Fragancias Exclusivas",
+    femeninos: "Fragancias Exclusivas",
+    "perfumes-masculinos": "Fragancias Exclusivas",
+    perfumes: "Fragancias Exclusivas",
+    "vapes-desechables": "Fragancias Exclusivas",
+    resistencias: "Fragancias Exclusivas",
+    "perfumes-de-disenador": "Fragancias Exclusivas",
+    "pods-recargables": "Fragancias Exclusivas",
+    unisex: "Fragancias Exclusivas",
+    liquidos: "Fragancias Exclusivas",
+    celulares: "Fragancias Exclusivas",
+    "body-splash-victoria-secret": "Fragancias Exclusivas",
 };
 
 export const SLUG_TO_ID = {
+    "fragancias-exclusivas": 1,
     masculinos: 1,
-    femeninos: 2,
+    femeninos: 1,
     "perfumes-masculinos": 1,
     perfumes: 1,
     "vapes-desechables": 1,
     resistencias: 1,
     "perfumes-de-disenador": 1,
-    "pods-recargables": 2,
-    unisex: 2,
-    liquidos: 2,
-    celulares: 2,
-    "body-splash-victoria-secret": 2,
+    "pods-recargables": 1,
+    unisex: 1,
+    liquidos: 1,
+    celulares: 1,
+    "body-splash-victoria-secret": 1,
 };
 
 export const NAME_TO_SLUG = {
-    Masculinos: "masculinos",
-    "Perfumes masculinos": "masculinos",
-    "Perfumes Masculinos": "masculinos",
-    "Fragancias de Hombre": "masculinos",
-    "Vapes Desechables": "masculinos",
-    Resistencias: "masculinos",
-    Perfumes: "masculinos",
-    "Perfumes de Diseñador": "masculinos",
-    "Perfumes de Disenador": "masculinos",
-    Femeninos: "femeninos",
-    "Fragancias de Mujer": "femeninos",
-    "Pods Recargables": "femeninos",
-    "Productos Karseell": "femeninos",
-    Unisex: "femeninos",
-    "Líquidos": "femeninos",
-    Celulares: "femeninos",
-    "Body splash victoria secret": "femeninos",
-    "Body Splash Victoria Secret": "femeninos",
+    "Fragancias Exclusivas": "fragancias-exclusivas",
+    Masculinos: "fragancias-exclusivas",
+    "Perfumes masculinos": "fragancias-exclusivas",
+    "Perfumes Masculinos": "fragancias-exclusivas",
+    "Fragancias de Hombre": "fragancias-exclusivas",
+    "Vapes Desechables": "fragancias-exclusivas",
+    Resistencias: "fragancias-exclusivas",
+    Perfumes: "fragancias-exclusivas",
+    "Perfumes de Diseñador": "fragancias-exclusivas",
+    "Perfumes de Disenador": "fragancias-exclusivas",
+    Femeninos: "fragancias-exclusivas",
+    "Fragancias de Mujer": "fragancias-exclusivas",
+    "Pods Recargables": "fragancias-exclusivas",
+    "Productos Karseell": "fragancias-exclusivas",
+    Unisex: "fragancias-exclusivas",
+    "Líquidos": "fragancias-exclusivas",
+    Celulares: "fragancias-exclusivas",
+    "Body splash victoria secret": "fragancias-exclusivas",
+    "Body Splash Victoria Secret": "fragancias-exclusivas",
 };
 
 export const mapCategoryIdFromName = (value = "") => {
-    const normalized = String(value || "")
-        .trim()
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-
-    if (
-        normalized.includes("femen") ||
-        normalized.includes("mujer") ||
-        normalized.includes("pod") ||
-        normalized.includes("unisex") ||
-        normalized.includes("karseell") ||
-        normalized.includes("liquido") ||
-        normalized.includes("celular") ||
-        normalized.includes("body") ||
-        normalized.includes("victoria")
-    ) {
-        return 2;
-    }
-
+    void value;
     return 1;
 };
 
@@ -140,5 +126,5 @@ export const getNormalizedCategoryId = (product) => {
 
 export const getDisplayCategoryName = (product) => {
     const normalizedId = getNormalizedCategoryId(product);
-    return CATEGORY_ID_TO_NAME[normalizedId] || "Masculinos";
+    return CATEGORY_ID_TO_NAME[normalizedId] || "Fragancias Exclusivas";
 };

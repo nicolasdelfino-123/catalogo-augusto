@@ -205,7 +205,7 @@ export default function SidebarFiltersNuevo({
                                         } else {
                                             const isWholesale = location.pathname.startsWith("/mayorista");
                                             const base = isWholesale ? "/mayorista" : "";
-                                            navigate(`${base}/categoria/${c.slug}`);
+                                            navigate(`${base}/${c.slug}`);
                                         }
                                         setOpen(false);
                                     }}

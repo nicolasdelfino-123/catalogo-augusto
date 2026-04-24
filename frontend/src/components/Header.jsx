@@ -9,7 +9,7 @@ import zarpados from '@/assets/zarpados-22.png'
 import { withWholesale } from "../utils/navigation.js";
 import { formatPrice } from "../utils/price.js";
 import { Search, ShoppingCart } from "lucide-react";
-import shatha from '@/assets/logo_attar_prueba.png'
+import logo from '@/assets/logo_augusto.png'
 import { PERFUME_CATEGORY_DEFINITIONS } from "../utils/perfumeCategories.js";
 
 const API = import.meta.env.VITE_BACKEND_URL?.replace(/\/+$/, "") || "";
@@ -248,7 +248,7 @@ export default function Header() {
   };
   const productCategories = PERFUME_CATEGORY_DEFINITIONS.map((category) => ({
     name: category.name,
-    route: `/categoria/${category.slug}`,
+    route: `/${category.slug}`,
     icon: categoryIcons[category.id] || "•",
   }));
 
@@ -336,9 +336,9 @@ export default function Header() {
             <div className="absolute left-1/2 -translate-x-1/2 pointer-events-none">
               <Link to={withWholesale("/inicio")} aria-label="Ir al inicio" className="pointer-events-auto">
                 <img
-                  src={shatha}
-                  alt="Shatha"
-                  className="mt-[-0px] md:mt-[-0px] h-[55px] md:h-[55px] object-contain transition-all duration-300"
+                  src={logo}
+                  alt="Logo"
+                  className="mt-[-0px] md:mt-[4px] h-[55px] md:h-[99px] object-contain transition-all duration-300"
                 />
               </Link>
             </div>
